@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+const cors = require('cors');
+app.use(cors());
 
 function MyApp() {
     return (
