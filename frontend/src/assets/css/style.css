@@ -1,0 +1,11 @@
+.color-nav{
+    background-color: darkgreen;
+}
+
+.header {
+    padding: 30px;
+    text-align: left;
+    background: #eeca19;
+    color: white;
+    font-size: 30px;
+  }
