@@ -1,6 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import SubmitReview from './submit-review';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <Routes>
+            <Route exact path="/" element={<App />} />
+            <Route path="/features" element={<App />} />
+            <Route path="/pricing" element={<App />} />
+            <Route path="/submit-review" element={<SubmitReview />} />
+        </Routes>
+    </BrowserRouter>,
+    document.getElementById('root')
+);
+  

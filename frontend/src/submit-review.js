@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import "./assets/css/style.css"
-import axios from 'axios';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+
+const SubmitReview = () => {
     return (
-      <div>
+        <div>
         <div className="header">
           <h1>Learn By Dining</h1>
           <p>Find the Best Food on Campus</p>
@@ -27,8 +26,10 @@ function App() {
             </Nav>
           </Container>
         </Navbar>
-      </div>
-    ); 
+        <div><p>will prob make a header component and put at top of all pages
+            instead of having copied html in every component</p>SUBMIT REVIEW PAGE </div>
+        </div>
+    )
 }
-
-export default App;
+ 
+export default SubmitReview;
