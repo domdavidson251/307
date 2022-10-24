@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Form from './Form'
 import "./assets/css/style.css"
 import axios from 'axios';
 import { Container, Nav, Navbar } from 'react-bootstrap';
