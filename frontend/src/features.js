@@ -1,15 +1,15 @@
 import React from 'react';
 import HeaderComp from "./header";
 
-const SubmitReview = () => {
+const Features = () => {
     return (
       <div>
         <HeaderComp></HeaderComp>
         <div>
-          <p>submit review page!</p>
+          <p>features</p>
         </div>
       </div>
     );
 }
  
-export default SubmitReview;
+export default Features;
