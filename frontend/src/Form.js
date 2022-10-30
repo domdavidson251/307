@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Form(props){
     const[review, setReview] = useState(
         {
             username: '',
             date: '',
-            stars: 0,
+            stars: '0',
             upvotes: 0,
             downvotes: 0,
-            review: ''
+            description: ''
         }
     );
 
@@ -22,7 +23,7 @@ function Form(props){
                     stars: review['stars'],
                     upvotes: review['upvotes'],
                     downvotes: review['downvotes'],
-                    review: review['review']
+                    description: review['review']
                 }
             );
         else if(name === "date")
@@ -33,10 +34,10 @@ function Form(props){
                     stars: review['stars'],
                     upvotes: review['upvotes'],
                     downvotes: review['downvotes'],
-                    review: review['review']
+                    description: review['review']
                 }
             );
-        else if(name === "stars")
+        else if(name === "star")
             setReview(
                 {
                     username: review['username'], 
@@ -44,10 +45,10 @@ function Form(props){
                     stars: value,
                     upvotes: review['upvotes'],
                     downvotes: review['downvotes'],
-                    review: review['review']
+                    description: review['review']
                 }
             );
-        else
+        else if(name === 'review')
             setReview(
                 {
                     username: review['username'], 
@@ -55,7 +56,7 @@ function Form(props){
                     stars: review['stars'],
                     upvotes: review['upvotes'],
                     downvotes: review['downvotes'],
-                    review: value
+                    description: value
                 }
             );
     }
@@ -67,54 +68,48 @@ function Form(props){
 
     return (
         <form>
-            <label htmlFor="Username">Username</label>
-            <input
-                type="text"
-                name="Username"
-                id="Username"
-                value={review.username}
-                onChange={handleChange} />
-            <label htmlFor="Date">Date</label>
-            <input
-                type="date"
-                name="Date"
-                id="Date"
-                value={review.date}
-                onChange={handleChange} />
-            <label htmlFor="Stars">Stars</label>
-            {/*<input
-                type="number"
-                name="Stars"
-                id="Stars"
-                value={review.stars}
-    onChange={handleChange} />*/}
-            <div class="txt-center">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+            <label htmlFor="Menu Item">Menu Item</label>
             
+            <div class="txt-center">
                 <form>
                     <div class="rating">
-                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" onChange={handleChange}/>
                         <label for="star5">☆</label>
-                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" onChange={handleChange}/>
                         <label for="star4">☆</label>
-                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" onChange={handleChange}/>
                         <label for="star3">☆</label>
-                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" onChange={handleChange}/>
                         <label for="star2">☆</label>
-                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" onChange={handleChange}/>
                         <label for="star1">☆</label>
                         <div class="clear"></div>
                     </div>
                 </form>
             </div>
-
-            <label htmlFor="Review">Review</label>
+            
+            <label htmlFor="username">Username</label>
             <input
                 type="text"
-                name="Review"
-                id="Review"
-                value={review.review}
+                name="username"
+                id="username"
+                value={review.username}
                 onChange={handleChange} />
+            
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Review</label>
+                <textarea 
+                    class="form-control" 
+                    type="text"
+                    name="review"
+                    id="review" 
+                    rows="3"
+                    onChange={handleChange}></textarea>
+            </div>
             <input type="button" value="Submit" onClick={submitForm} />
+            
         </form>
     );
 }
