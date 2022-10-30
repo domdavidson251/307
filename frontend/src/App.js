@@ -22,7 +22,7 @@ function App() {
           description: "Restaurant"
         },
         {
-          name: "c",
+          name: "",
           description: "Restaurant"
         },
       ]
@@ -31,8 +31,11 @@ function App() {
 
   function makeTableBody() {
     const eles = restaurants.map((restaurant, index) => {
-      return (        
+      const link = "http://localhost:3000/restaurants/" + restaurant.name;
+      const linkStyle = { "text-decoration": "none" };
+      return (
         <div class="col-auto mb-3">
+          <a href={link} style={linkStyle}>
           <div class="card" style={{width: '18rem'}}>
               <div class="card-body">
                   <h5 class="card-title">{restaurant.name}</h5>
@@ -40,6 +43,7 @@ function App() {
                   <p class="card-text">text</p>
               </div>
           </div>
+          </a>
         </div>
       );
     });

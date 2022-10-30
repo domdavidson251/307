@@ -63,4 +63,4 @@ function RestaurantMenu() {
   ); 
 }
 
-export default App;
+export default RestaurantMenu;
