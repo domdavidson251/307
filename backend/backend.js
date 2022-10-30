@@ -49,6 +49,7 @@ app.get('/reviews', (req, res) => {
 app.post('/reviews', (req, res) => {
     const reviewToAdd = req.body;
     reviews['reviews_list'].push(reviewToAdd);
+    res.send(reviewToAdd);
     res.status(200).end();
 });
 
