@@ -18,12 +18,6 @@ const HeaderComp = () => {
                     <LinkContainer to="/">
                         <Nav.Link href="#home">Home</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/features">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/pricing">
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                    </LinkContainer>
                     <LinkContainer to="/submit-review">
                         <Nav.Link>Submit Review</Nav.Link>
                     </LinkContainer>
