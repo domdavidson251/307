@@ -48,29 +48,70 @@ app.post('/restaurants', async (req, res) => {
 });
 
 
-app.get('/reviews', (req, res) => {
-    res.send(reviews);
+app.get('/reviews', async (req, res) => {
+    try {
+        const result = await services.getReviews();
+        res.send({reviews_list: result});
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('An error ocurred in the server');
+    }
 });
 
-app.post('/reviews', (req, res) => {
-    const reviewToAdd = req.body;
-    reviews['reviews_list'].push(reviewToAdd);
-    res.send(reviewToAdd);
-    res.status(200).end();
+app.get('/reviews/:id', async (req, res) => {
+    const id = req.params['id'];
+    const result = await services.findReviewById(id);
+    if (result === undefined || result === null) {
+        res.status(404).send('Resource not found.');
+    }
+    else {
+        res.send({reviews_list: result});
+    }
 });
 
-//get restaurants
-// get restaurant by id
-// get restaurant by name
-// get menu items
-// get menu item by id
-//get ratings
-//post(add) rating
-//post(add) menu item
-//post(add) restaurant
-//delete rating
-//delete restaurant
-//delete menu item
+app.post('/reviews', async (req, res) => {
+    const review = req.body;
+    const savedReview = await services.addReview(review);
+    if (savedReview) {
+        res.status(201).send(savedReview);
+    }
+    else {
+        res.status(500).end();
+    }
+});
+
+app.get('/menu', async (req, res) => {
+    const name = req.query['name'];
+    try {
+        const result = await services.getMenuItems(name);
+        res.send({menuitems_list: result});
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('An error ocurred in the server');
+    }
+});
+
+app.get('/menu/:id', async (req, res) => {
+    const id = req.params['id'];
+    const result = await services.findMenuItemById(id);
+    if (result === undefined || result === null) {
+        res.status(404).send('Resource not found.');
+    }
+    else {
+        res.send({menuitems_list: result});
+    }
+});
+
+app.post('/menu', async (req, res) => {
+    const menuitem = req.body;
+    const savedMenuItem = await services.addMenuItem(menuitem);
+    if (savedMenuItem) {
+        res.status(201).send(savedMenuItem);
+    }
+    else {
+        res.status(500).end();
+    }
+});
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);

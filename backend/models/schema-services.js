@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const RestaurantSchema = require("./schemas").RestaurantSchema;
+const ReviewSchema = require("./schemas").ReviewSchema;
+const MenuItemSchema = require("./schemas").MenuItemSchema;
 
 let dbConnection;
 
@@ -54,7 +56,85 @@ async function addRestaurant(restaurant) {
     }   
 }
 
+async function getReviews(){
+    const reviewModel = getDbConnection().model("Review", ReviewSchema);
+    let result;
+    result = await reviewModel.find();
+    return result;
+}
+
+async function findReviewById(id){
+    const reviewModel = getDbConnection().model("Review", ReviewSchema);    
+    try{
+        return await reviewModel.findById(id);
+    }catch(error) {
+        console.log(error);
+        return undefined;
+    }
+}
+
+async function addReview(review) {
+    const reviewModel = getDbConnection().model("Review", ReviewSchema);
+    try{
+        // You can use a Model to create new documents using 'new' and 
+        // passing the JSON content of the Document:
+        const reviewToAdd = new reviewModel(review);
+        const savedReview = await reviewToAdd.save()
+        return savedReview;
+    }catch(error) {
+        console.log(error);
+        return false;
+    }   
+}
+
+async function getMenuItems(name) {
+    const menuModel = getDbConnection().model("MenuItem", MenuItemSchema);
+    let result;
+    if (name === undefined) {
+        result = await menuModel.find();
+    }
+    else if (name) {
+        result = await findMenuItemByName(name);
+    }
+    return result;
+}
+
+async function findMenuItemByName(name) {
+    const menuModel = getDbConnection().model("MenuItem", MenuItemSchema);
+    return await menuModel.find({'name':name});
+}
+
+async function findMenuItemById(id) {
+    const menuModel = getDbConnection().model("MenuItem", MenuItemSchema);    
+    try{
+        return await menuModel.findById(id);
+    }catch(error) {
+        console.log(error);
+        return undefined;
+    }
+}
+
+async function addMenuItem(menuitem) {
+    const menuModel = getDbConnection().model("MenuItem", MenuItemSchema);
+    try{
+        // You can use a Model to create new documents using 'new' and 
+        // passing the JSON content of the Document:
+        const menuItemToAdd = new menuModel(menuitem);
+        const savedMenuItem = await menuItemToAdd.save()
+        return savedMenuItem;
+    }catch(error) {
+        console.log(error);
+        return false;
+    }
+}
+
 exports.getRestaurants = getRestaurants;
 exports.findRestaurantById = findRestaurantById;
 exports.addRestaurant = addRestaurant;
+exports.getReviews = getReviews;
+exports.findReviewById = findReviewById;
+exports.addReview = addReview;
+exports.getMenuItems = getMenuItems;
+exports.findMenuItemById = findMenuItemById;
+exports.addMenuItem = addMenuItem;
 
