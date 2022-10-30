@@ -43,8 +43,7 @@ const RestaurantSchema = new mongoose.Schema({
 
 const rating = mongoose.model('Rating', RatingSchema);
 const menuitem = mongoose.model('Menu Item', MenuItemSchema);
-const restaurant = mongoose.model('Restaurant', RestaurantSchema)
-
+const restaurant = mongoose.model('Restaurant', RestaurantSchema);
 
 module.exports = RestaurantSchema;
 module.exports = MenuItemSchema;

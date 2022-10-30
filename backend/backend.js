@@ -1,7 +1,11 @@
 const express = require('express');
+const cors = require('cors');
+
+const services = require('./models/schema-services');
+
 const app = express();
 const port = 4000;
-const cors = require('cors');
+
 
 app.use(cors());
 app.use(express.json());
@@ -9,6 +13,30 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
+app.get('/restaurants', async (req, res) => {
+    const name = req.query['name'];
+    try {
+        const result = await services.getRestaurants(name);
+        res.send({restaurants_list: result});
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('An error ocurred in the server');
+    }
+});
+
+app.get('/restaurants/:id', async (req, res) => {
+    const id = req.params['id'];
+    const result = await services.findRestaurantById(id);
+    if (result === undefined || result === null) {
+        res.status(404).send('Resource not found.');
+    }
+    else {
+        res.send({restaurants_list: result});
+    }
+});
+
+
 //get restaurants
 // get restaurant by id
 // get restaurant by name
