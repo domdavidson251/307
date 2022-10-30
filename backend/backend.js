@@ -10,11 +10,6 @@ const port = 4000;
 app.use(cors());
 app.use(express.json());
 
-//FOR TESTING PURPOSES
-const reviews = { 
-    reviews_list : []
- }
-
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
@@ -50,7 +45,7 @@ app.post('/restaurants', async (req, res) => {
     else {
         res.status(500).end();
     }
-})
+});
 
 
 app.get('/reviews', (req, res) => {

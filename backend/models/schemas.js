@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const RatingSchema = new mongoose.Schema({
     _id: mongoose.Types.ObjectId,
     stars: Number,
@@ -25,9 +24,7 @@ const MenuItemSchema = new mongoose.Schema({
     restaurant: {type: mongoose.Types.ObjectId, ref: 'Restaurant'},
     ratings: [{type: mongoose.Types.ObjectId, ref: 'Rating'}]
 }, {colection : 'menuitems_list'});
-
 const RestaurantSchema = new mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
     name: {
         type: String,
         required: true,
@@ -45,6 +42,8 @@ const rating = mongoose.model('Rating', RatingSchema);
 const menuitem = mongoose.model('Menu Item', MenuItemSchema);
 const restaurant = mongoose.model('Restaurant', RestaurantSchema);
 
-module.exports = RestaurantSchema;
-module.exports = MenuItemSchema;
-module.exports = RatingSchema;
+module.exports = {
+    RestaurantSchema: RestaurantSchema,
+    MenuItemSchema: MenuItemSchema,
+    RatingSchema: RatingSchema
+};

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const RestaurantSchema = require("./schemas");
+const RestaurantSchema = require("./schemas").RestaurantSchema;
 
 let dbConnection;
 
