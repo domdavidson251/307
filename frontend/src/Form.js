@@ -106,7 +106,7 @@ function Form(props){
                 <label for="Review">Review</label>
                 <textarea 
                     class="form-control" 
-                    maxlength="100"
+                    maxlength="500"
                     type="text"
                     name="review"
                     id="review"
