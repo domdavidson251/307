@@ -2,52 +2,49 @@ import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderComp from './header';
 
-function App() {
-  const [restaurants, setRestaurants] = useState([]);
+function RestaurantMenu() {
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     // temporary fake data for restaurants 
-    setRestaurants(
+    setItems(
       [
         {
-          name: "Subway",
-          description: "Restaurant"
+          name: "sandwich",
+          description: "meat in between bread"
         },
         {
-          name: "a",
-          description: "Restaurant"
+          name: "soda",
+          description: "carbonated"
         },
         {
-          name: "b",
-          description: "Restaurant"
+          name: "pizza",
+          description: "bruh"
         },
         {
-          name: "",
-          description: "Restaurant"
+          name: "pasta",
+          description: "bruh pt2"
         },
       ]
     )
   }, []);
 
   function makeTableBody() {
-    const eles = restaurants.map((restaurant, index) => {
-      const link = "http://localhost:3000/restaurants/" + restaurant.name;
-      const linkStyle = { "text-decoration": "none" };
-      return (
+    const elems = items.map((item) => {
+      return (        
         <div class="col-auto mb-3">
-          <a href={link} style={linkStyle}>
-          <div class="card" style={{width: '18rem'}}>
-              <div class="card-body">
-                  <h5 class="card-title">{restaurant.name}</h5>
+            <div class="card" style={{width: '18rem'}}>
+                <div class="card-body">
+                  <h5 class="card-title">{item.name}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">text</p>
-              </div>
-          </div>
-          </a>
+                  <p class="card-text">{item.description}</p>
+                </div>
+            </div>
         </div>
       );
     });
-    return eles;
+
+    return elems;
   }
   
   return (
@@ -66,4 +63,4 @@ function App() {
   ); 
 }
 
-export default App;
+export default RestaurantMenu;
