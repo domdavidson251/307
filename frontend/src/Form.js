@@ -109,6 +109,7 @@ function Form(props){
                 <label for="Review">Review</label>
                 <textarea 
                     class="form-control" 
+                    maxlength="100"
                     type="text"
                     name="review"
                     id="review"
@@ -117,7 +118,6 @@ function Form(props){
                     onChange={handleChange}></textarea>
             </div>
             <input type="button" value="Submit" onClick={submitForm} />
-            
         </form>
     );
 }
