@@ -41,6 +41,17 @@ app.get('/restaurants/:id', async (req, res) => {
     }
 });
 
+app.post('/restaurants', async (req, res) => {
+    const restaurant = req.body;
+    const savedRestaurant = await services.addRestaurant(restaurant);
+    if (savedRestaurant) {
+        res.status(201).send(savedRestaurant);
+    }
+    else {
+        res.status(500).end();
+    }
+})
+
 
 app.get('/reviews', (req, res) => {
     res.send(reviews);

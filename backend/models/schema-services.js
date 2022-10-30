@@ -40,6 +40,21 @@ async function findRestaurantByName(name){
     return await restaurantModel.find({'name':name});
 }
 
+async function addRestaurant(restaurant) {
+    const restaurantModel = getDbConnection().model("Restaurant", RestaurantSchema);
+    try{
+        // You can use a Model to create new documents using 'new' and 
+        // passing the JSON content of the Document:
+        const restaurantToAdd = new restaurantModel(restaurant);
+        const savedRestaurant = await restaurantToAdd.save()
+        return savedRestaurant;
+    }catch(error) {
+        console.log(error);
+        return false;
+    }   
+}
+
 exports.getRestaurants = getRestaurants;
 exports.findRestaurantById = findRestaurantById;
+exports.addRestaurant = addRestaurant;
 
