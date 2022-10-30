@@ -75,10 +75,7 @@ function Form(props){
 
     return (
         <form>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-
             <label htmlFor="Menu Item">Menu Item</label>
-            
             <div class="txt-center">
                 <form>
                     <div class="rating">
