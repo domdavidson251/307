@@ -28,8 +28,25 @@ function App() {
   return (
     <div>
       <HeaderComp></HeaderComp>
-      <div>
-        <p>HOME PAGEEEE</p>
+      <div class="row">
+        <div class="col-sm-6">
+        <div class="card">
+          {//<img class="card-img-top" src="..." alt="Card image cap">
+}
+          <div class="card-body">
+            <p class="card-text">Restaurant1</p>
+          </div>
+        </div>
+        </div>
+        <div class="col-sm-6">
+        <div class="card">
+          {//<img class="card-img-top" src="..." alt="Card image cap">
+}
+          <div class="card-body">
+            <p class="card-text">Restaurant2</p>
+          </div>
+        </div>
+        </div>
       </div>
     </div>
   ); 

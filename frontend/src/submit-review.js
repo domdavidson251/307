@@ -49,7 +49,7 @@ function SubmitReview() {
     <div>
       <HeaderComp></HeaderComp>
       <div className="container">
-      <Form handleSubmit={updateList} />
+        <Form handleSubmit={updateList} />
       </div>
     </div>
   )
