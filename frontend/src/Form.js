@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Form(props){
     const[review, setReview] = useState(
@@ -12,6 +11,19 @@ function Form(props){
             description: ''
         }
     );
+
+    function submitForm() {
+        props.handleSubmit(review);
+        setReview(
+            {
+                username: '',
+                date: '',
+                stars: '0',
+                upvotes: 0,
+                downvotes: 0,
+                description: ''
+            });
+      }
 
     function handleChange(event){
         const{name, value} = event.target;
@@ -61,11 +73,6 @@ function Form(props){
             );
     }
 
-    function submitForm() {
-        props.handleSubmit(review);
-        setReview({name: '', job: ''});
-      }
-
     return (
         <form>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -89,7 +96,7 @@ function Form(props){
                     </div>
                 </form>
             </div>
-            
+
             <label htmlFor="username">Username</label>
             <input
                 type="text"
@@ -99,12 +106,13 @@ function Form(props){
                 onChange={handleChange} />
             
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Review</label>
+                <label for="Review">Review</label>
                 <textarea 
                     class="form-control" 
                     type="text"
                     name="review"
-                    id="review" 
+                    id="review"
+                    value={review.description}
                     rows="3"
                     onChange={handleChange}></textarea>
             </div>
@@ -113,7 +121,5 @@ function Form(props){
         </form>
     );
 }
-
-
 
 export default Form;
