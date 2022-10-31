@@ -14,15 +14,15 @@ function App() {
           description: "Restaurant"
         },
         {
-          name: "a",
+          name: "Brunch",
           description: "Restaurant"
         },
         {
-          name: "b",
+          name: "Streats",
           description: "Restaurant"
         },
         {
-          name: "",
+          name: "Chick-fil-a",
           description: "Restaurant"
         },
       ]
