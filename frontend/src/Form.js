@@ -2,63 +2,63 @@ import React, { useState } from "react";
 
 function Form(props) {
   const [review, setReview] = useState({
-    username: "",
+    author: "",
     date: "",
     stars: "0",
     upvotes: 0,
     downvotes: 0,
-    description: "",
+    review: "",
   });
 
   function submitForm() {
     props.handleSubmit(review);
     setReview({
-      username: "",
+      author: "",
       date: "",
       stars: "0",
       upvotes: 0,
       downvotes: 0,
-      description: "",
+      review: "",
     });
   }
 
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "username")
+    if (name === "author")
       setReview({
-        username: value,
+        author: value,
         date: review["date"],
         stars: review["stars"],
         upvotes: review["upvotes"],
         downvotes: review["downvotes"],
-        description: review["review"],
+        review: review["review"],
       });
     else if (name === "date")
       setReview({
-        username: review["username"],
+        author: review["author"],
         date: value,
         stars: review["stars"],
         upvotes: review["upvotes"],
         downvotes: review["downvotes"],
-        description: review["review"],
+        review: review["review"],
       });
     else if (name === "star")
       setReview({
-        username: review["username"],
+        author: review["author"],
         date: review["date"],
         stars: value,
         upvotes: review["upvotes"],
         downvotes: review["downvotes"],
-        description: review["review"],
+        review: review["review"],
       });
     else if (name === "review")
       setReview({
-        username: review["username"],
+        author: review["author"],
         date: review["date"],
         stars: review["stars"],
         upvotes: review["upvotes"],
         downvotes: review["downvotes"],
-        description: value,
+        review: value,
       });
   }
 
@@ -118,24 +118,24 @@ function Form(props) {
         </form>
       </div>
 
-      <label htmlFor="username">Username</label>
+      <label htmlFor="author">Username</label>
       <input
         type="text"
-        name="username"
-        id="username"
-        value={review.username}
+        name="author"
+        id="author"
+        value={review.author}
         onChange={handleChange}
       />
 
       <div class="form-group">
-        <label for="Review">Review</label>
+        <label htmlFor="review">Review</label>
         <textarea
           class="form-control"
           maxlength="500"
           type="text"
           name="review"
           id="review"
-          value={review.description}
+          value={review.review}
           rows="3"
           onChange={handleChange}
         ></textarea>

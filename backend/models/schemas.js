@@ -26,7 +26,7 @@ const MenuItemSchema = new mongoose.Schema(
     restaurant: { type: mongoose.Types.ObjectId, ref: "Restaurant" },
     reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
   },
-  { colection: "menuitems_list" }
+  { collection: "menuitems_list" }
 );
 const RestaurantSchema = new mongoose.Schema(
   {
