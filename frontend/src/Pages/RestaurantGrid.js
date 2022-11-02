@@ -27,7 +27,9 @@ function RestaurantGrid() {
 
   return (
     <div>
-      <div class="container mt-4 row">{makeTableBody()}</div>
+      <div class="container mt-4">
+        <div class="row">{makeTableBody()}</div>
+      </div>
     </div>
   );
 }
