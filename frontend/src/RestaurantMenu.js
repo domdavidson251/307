@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
+import Form from "./Form";
 
 function RestaurantMenu() {
   const [items, setItems] = useState([]);
@@ -65,6 +66,14 @@ function RestaurantMenu() {
 
       <HeaderComp></HeaderComp>
       <div class="container mt-4">
+        <div class="container">
+          <div class="row">
+            <a href="/submit-review">
+              <input type="button" value="Submit a Review" />
+            </a>
+          </div>
+        </div>
+
         <div class="row">{makeTableBody()}</div>
       </div>
     </div>
