@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Form from './Form';
 import axios from 'axios';
-// import "./assets/css/style.css"
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import "./assets/css/style.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderComp from "./header";
 
 function SubmitReview() {

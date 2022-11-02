@@ -1,54 +1,9 @@
-import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HeaderComp from './header';
+import RestaurantGrid from './Pages/RestaurantGrid';
+import './App.css';
 
 function App() {
-  const [restaurants, setRestaurants] = useState([]);
-
-  useEffect(() => {
-    // temporary fake data for restaurants 
-    setRestaurants(
-      [
-        {
-          name: "Subway",
-          description: "Restaurant"
-        },
-        {
-          name: "Brunch",
-          description: "Restaurant"
-        },
-        {
-          name: "Streats",
-          description: "Restaurant"
-        },
-        {
-          name: "Chick-fil-a",
-          description: "Restaurant"
-        },
-      ]
-    )
-  }, []);
-
-  function makeTableBody() {
-    const eles = restaurants.map((restaurant, index) => {
-      const link = "http://localhost:3000/restaurants/" + restaurant.name;
-      const linkStyle = { "text-decoration": "none" };
-      return (
-        <div class="col-auto mb-3">
-          <a href={link} style={linkStyle}>
-          <div class="card" style={{width: '18rem'}}>
-              <div class="card-body">
-                  <h5 class="card-title">{restaurant.name}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">text</p>
-              </div>
-          </div>
-          </a>
-        </div>
-      );
-    });
-    return eles;
-  }
   
   return (
     <div>
@@ -57,11 +12,7 @@ function App() {
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       
       <HeaderComp></HeaderComp>
-      <div class="container mt-4">
-        <div class="row">
-          {makeTableBody()}
-        </div>
-      </div>
+      <RestaurantGrid />
     </div>
   ); 
 }
