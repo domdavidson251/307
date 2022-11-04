@@ -11,6 +11,7 @@ Style checker: Prettier https://prettier.io/
       How to install Prettier: lookup on “Prettier - Code formatter.” on VS Code Extensions and download
 
 To connect to cloud DB, put a file called ".env" in your backend folder, and add this line (insert your username and password):
+
 ```MONGODB_URI="mongodb+srv://username:password@cluster0.jycgx75.mongodb.net/?retryWrites=true&w=majority"```
 
 Example to run test files in backend:
