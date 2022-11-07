@@ -7,6 +7,11 @@ require("dotenv").config();
 
 let dbConnection;
 
+function setConnection(newConn) {
+  dbConnection = newConn;
+  return dbConnection;
+}
+
 function getDbConnection() {
   if (!dbConnection) {
     dbConnection = mongoose.createConnection(process.env.MONGODB_URI, {
@@ -149,3 +154,4 @@ exports.addReview = addReview;
 exports.getMenuItems = getMenuItems;
 exports.findMenuItemById = findMenuItemById;
 exports.addMenuItem = addMenuItem;
+exports.setConnection = setConnection;
