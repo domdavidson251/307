@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "prettier --check . && react-scripts test",
+    "test": "prettier --check .",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
