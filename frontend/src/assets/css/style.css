@@ -1,58 +1,58 @@
-.color-nav{
-    background-color: darkgreen;
+.color-nav {
+  background-color: darkgreen;
 }
 
 .header {
-    padding: 30px;
-    text-align: left;
-    background: #eeca19;
-    color: white;
-    font-size: 30px;
-  }
+  padding: 30px;
+  text-align: left;
+  background: #eeca19;
+  color: white;
+  font-size: 30px;
+}
 
-  .txt-center {
-    text-align: center;
+.txt-center {
+  text-align: center;
 }
 .hide {
-    display: none;
+  display: none;
 }
 
 .clear {
-    float: none;
-    clear: both;
+  float: none;
+  clear: both;
 }
 
 .rating {
-    width: 90px;
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    text-align: center;
-    position: relative;
+  width: 90px;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  position: relative;
 }
 
 .rating > label {
-    float: right;
-    display: inline;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    width: 1.1em;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.303);
+  float: right;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 1.1em;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.303);
 }
 
 .rating > label:hover,
 .rating > label:hover ~ label,
 .rating > input.radio-btn:checked ~ label {
-    color: transparent;
+  color: transparent;
 }
 
 .rating > label:hover:before,
 .rating > label:hover ~ label:before,
 .rating > input.radio-btn:checked ~ label:before,
 .rating > input.radio-btn:checked ~ label:before {
-    content: "\2605";
-    position: absolute;
-    left: 0;
-    color: #FFD700;
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: #ffd700;
 }
