@@ -72,10 +72,14 @@ test("testing getReviews()", async () => {
   expect(reviews[1].review).toBe("DECENT");
 });
 
+<<<<<<< HEAD
 test("testing findReviewById()", async () => {
   const anyId = "123";
   const review = await services.findReviewById(anyId);
   expect(review).toBeUndefined();
+=======
+  expect(1).toBe(1);
+>>>>>>> 37385b50d0f44e45e3703ed139f5fa73b57bb1ac
 });
 
 // test("testing addReview()", async () => {
