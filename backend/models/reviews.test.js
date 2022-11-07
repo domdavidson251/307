@@ -44,7 +44,7 @@ beforeEach(async () => {
   let result = new reviewModel(dummyReview);
   await result.save();
 
-  let dummyReview2 = {
+  dummyReview = {
     stars: 5,
     review: "DECENT",
     date: "July 10, 2004",
@@ -52,18 +52,16 @@ beforeEach(async () => {
     upvotes: 10,
     downvotes: 0,
   };
-  let result2 = new reviewModel(dummyReview2);
-  await result2.save();
+  result = new reviewModel(dummyReview);
+  await result.save();
 });
 
 afterEach(async () => {
-  reviewModel.deleteMany();
+  await reviewModel.deleteMany({});
 });
 
 test("testing getReviews()", async () => {
   const reviews = await services.getReviews();
-
-  console.log(reviews);
 
   expect(reviews.length).toBe(2);
   expect(reviews[0].author).toBe("Bob");
@@ -78,15 +76,21 @@ test("testing findReviewById()", async () => {
   expect(review).toBeUndefined();
 });
 
-// test("testing addReview()", async () => {
-//   let dummyReview = {
-//     stars: 0,
-//     review: ":(",
-//     date: "October 31, 1924",
-//     author: "J",
-//     upvotes: 3,
-//     downvotes: 2,
-//   };
+test("testing addReview()", async () => {
+  const dummyReview = {
+    stars: 0,
+    review: ":(",
+    author: "J",
+    upvotes: 3,
+    downvotes: 2,
+  };
 
-//   services.addReview(dummyReview);
-// });
+  let reviews = await services.getReviews();
+
+  console.log(reviews.length);
+
+  const res = await services.addReview(dummyReview);
+
+  reviews = await services.getReviews();
+  expect(reviews.length).toBe(3);
+});
