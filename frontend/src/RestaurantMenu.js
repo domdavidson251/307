@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
-import Form from "./Form";
+//import Form from "./Form";
 
 function RestaurantMenu() {
   const [items, setItems] = useState([]);
