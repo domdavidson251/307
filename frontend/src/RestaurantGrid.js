@@ -1,13 +1,16 @@
 //import {Container, Row, Col} from 'react-bootstrap';
 //import {useEffect, useState} from 'react';
+import HeaderComp from "./header";
 import restaurantData from "./restaurantData";
+import Restaurant from "./Restaurant";
+import { Routes, Route } from "react-router-dom";
 
 //===============================================================================
 
 function RestaurantGrid() {
   function makeTableBody() {
     const eles = restaurantData.map((restaurant) => {
-      const link = "http://localhost:3000/restaurants/" + restaurant.name;
+      const link = "http://localhost:3000/" + restaurant.name;
       const linkStyle = { "text-decoration": "none" };
       return (
         <div class="col-auto mb-3">
@@ -26,11 +29,15 @@ function RestaurantGrid() {
   }
 
   return (
-    <div>
-      <div class="container mt-4">
-        <div class="row">{makeTableBody()}</div>
+    <>
+      <HeaderComp></HeaderComp>
+
+      <div>
+        <div class="container mt-4">
+          <div class="row">{makeTableBody()}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
