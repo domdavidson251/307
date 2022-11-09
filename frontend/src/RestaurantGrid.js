@@ -1,13 +1,13 @@
 //import {Container, Row, Col} from 'react-bootstrap';
 //import {useEffect, useState} from 'react';
 import HeaderComp from "./header";
-import restaurantData from "./restaurantData";
 import Restaurant from "./Restaurant";
 import { Routes, Route } from "react-router-dom";
 
 //===============================================================================
 
-function RestaurantGrid() {
+function RestaurantGrid(props) {
+  const restaurantData = props.restaurantData;
   function makeTableBody() {
     const eles = restaurantData.map((restaurant) => {
       const link = "http://localhost:3000/" + restaurant.name;

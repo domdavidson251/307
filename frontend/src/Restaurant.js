@@ -4,33 +4,15 @@ import HeaderComp from "./header";
 //import Form from "./Form";
 //please work
 
-function Restaurant() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    // temporary fake data for restaurants
-    setItems([
-      {
-        name: "sandwich",
-        description: "meat in between bread",
-      },
-      {
-        name: "soda",
-        description: "carbonated",
-      },
-      {
-        name: "pizza",
-        description: "bruh",
-      },
-      {
-        name: "pasta",
-        description: "bruh pt2",
-      },
-    ]);
-  }, []);
+function Restaurant(props) {
+  const restaurantData = props.restaurantData;
+  const restaurantName = window.location.pathname.substring(1);
+  const rest = restaurantData.filter((r) => r.name === restaurantName);
+  console.log(restaurantName);
+  console.log(props.restaurantData);
 
   function makeTableBody() {
-    const elems = items.map((item) => {
+    const elems = rest[0].menuitems.map((item) => {
       return (
         <div class="col-auto mb-3">
           <div class="card" style={{ width: "18rem" }}>
