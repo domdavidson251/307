@@ -14,5 +14,5 @@ To connect to cloud DB, put a file called ".env" in your backend folder, and add
 
 ```MONGODB_URI="mongodb+srv://username:password@cluster0.jycgx75.mongodb.net/?retryWrites=true&w=majority"```
 
-Example to run test files in backend:
-```npm test models/reviews.test.js```
+To run test files in backend:
+```npm test```
