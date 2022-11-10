@@ -26,13 +26,13 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-        working-directory: ./backend
+        working-directory: backend
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./backend
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,4 +54,4 @@ jobs:
           app-name: 'learnbydining'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3FBAEF2B64284C10B23CB6551299D6D5 }}
-          package: ./backend
+          package: .
