@@ -1,33 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
+import RestaurantMenu from "./RestaurantMenu";
+import RestaurantReviews from "./RestaurantReviews";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 //import Form from "./Form";
 //please work
 
 function Restaurant(props) {
-  const restaurantData = props.restaurantData;
-  const restaurantName = window.location.pathname.substring(1);
-  const rest = restaurantData.filter((r) => r.name === restaurantName);
+  let urlParams = useParams();
+  const restaurantName = urlParams.restaurant;
+  const rest = props.restaurantData.filter((r) => r.name === restaurantName);
   console.log(restaurantName);
-  console.log(props.restaurantData);
-
-  function makeTableBody() {
-    const elems = rest[0].menuitems.map((item) => {
-      return (
-        <div class="col-auto mb-3">
-          <div class="card" style={{ width: "18rem" }}>
-            <div class="card-body">
-              <h5 class="card-title">{item.name}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{item.description}</p>
-            </div>
-          </div>
-        </div>
-      );
-    });
-
-    return elems;
-  }
+  console.log(rest[0]);
 
   return (
     <div>
@@ -42,7 +28,8 @@ function Restaurant(props) {
           </div>
         </div>
 
-        <div class="row">{makeTableBody()}</div>
+        <RestaurantMenu restaurant={rest[0]}></RestaurantMenu>
+        <RestaurantReviews restaurant={rest[0]}></RestaurantReviews>
       </div>
     </div>
   );

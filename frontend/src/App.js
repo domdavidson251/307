@@ -23,7 +23,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("called useEffect");
     fetchAll().then((result) => {
       if (result) setRestaurants(result);
     });
