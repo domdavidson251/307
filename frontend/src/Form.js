@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import usernameGen from "username-gen";
 
 function Form(props) {
   const [review, setReview] = useState({
-    author: "",
+    author: usernameGen.generateUsername(
+      Math.floor(Math.random() * 15) + 5,
+      false
+    ),
     date: "",
     stars: "0",
     upvotes: 0,
@@ -13,7 +17,10 @@ function Form(props) {
   function submitForm() {
     props.handleSubmit(review);
     setReview({
-      author: "",
+      author: usernameGen.generateUsername(
+        Math.floor(Math.random() * 15) + 5,
+        false
+      ),
       date: "",
       stars: "0",
       upvotes: 0,
@@ -24,16 +31,7 @@ function Form(props) {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "author")
-      setReview({
-        author: value,
-        date: review["date"],
-        stars: review["stars"],
-        upvotes: review["upvotes"],
-        downvotes: review["downvotes"],
-        review: review["review"],
-      });
-    else if (name === "date")
+    if (name === "date")
       setReview({
         author: review["author"],
         date: value,
@@ -118,15 +116,6 @@ function Form(props) {
         </form>
       </div>
 
-      <label htmlFor="author">Username</label>
-      <input
-        type="text"
-        name="author"
-        id="author"
-        value={review.author}
-        onChange={handleChange}
-      />
-
       <div class="form-group">
         <label htmlFor="review">Review</label>
         <textarea
@@ -140,7 +129,9 @@ function Form(props) {
           onChange={handleChange}
         ></textarea>
       </div>
-      <input type="button" value="Submit" onClick={submitForm} />
+      <a href="/">
+        <input type="button" value="Submit" onClick={submitForm} />
+      </a>
     </form>
   );
 }
