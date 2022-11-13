@@ -14,6 +14,7 @@ function Restaurant(props) {
   const rest = props.restaurantData.filter((r) => r.name === restaurantName);
   console.log(restaurantName);
   console.log(rest[0]);
+  const reviewLink = "/" + restaurantName + "/submit-review";
 
   return (
     <div>
@@ -22,7 +23,7 @@ function Restaurant(props) {
       <div class="container mt-4">
         <div class="container">
           <div class="row">
-            <a href="/submit-review">
+            <a href={reviewLink}>
               <input type="button" value="Submit a Review" />
             </a>
           </div>

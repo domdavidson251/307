@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
 import RestaurantGrid from "./RestaurantGrid";
 import Restaurant from "./Restaurant";
-import SubmitReview from "./submit-review";
+import SubmitReview from "./SubmitReview";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
@@ -38,7 +38,10 @@ function App() {
         path="/:restaurant"
         element={<Restaurant restaurantData={restaurants} />}
       />
-      <Route path="/submit-review" element={<SubmitReview />} />
+      <Route
+        path="/:restaurant/submit-review"
+        element={<SubmitReview restaurantData={restaurants} />}
+      />
     </Routes>
   );
 }

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Form from "./Form";
 import axios from "axios";
 import "./assets/css/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
 
-function SubmitReview() {
+function SubmitReview(props) {
+  let urlParams = useParams();
+  const restaurantName = urlParams.restaurant;
+  const rest = props.restaurantData.filter((r) => r.name === restaurantName);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {

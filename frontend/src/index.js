@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import SubmitReview from "./submit-review";
-import RestaurantMenu from "./RestaurantMenu";
-import RestaurantGrid from "./RestaurantGrid";
-import Restaurant from "./Restaurant";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
