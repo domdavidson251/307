@@ -44,8 +44,9 @@ app.post("/restaurants", async (req, res) => {
   }
 });
 
-app.patch("/restaurants/:id", async (req, res) => {
-  const name = req.params["id"];
+app.patch("/restaurants/:name", async (req, res) => {
+  console.log(req.body);
+  const name = req.params["name"];
   const temp = await services.findRestaurantByName(name);
   const origRes = temp[0];
   let modifiedRes = origRes;

@@ -6,21 +6,32 @@ import "./assets/css/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
 
+const mongoose = require("mongoose");
+
 function SubmitReview(props) {
   let urlParams = useParams();
   const restaurantName = urlParams.restaurant;
-  const rest = props.restaurantData.filter((r) => r.name === restaurantName);
+  console.log(restaurantName);
+  //const rest = props.restaurantData.filter((r) => r.name === restaurantName);
+
   const [reviews, setReviews] = useState([]);
+  //const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    fetchAll().then((result) => {
+    fetchAllReviews().then((result) => {
       if (result) {
         setReviews(result);
       }
     });
+    /*fetchAllRestaurants().then((result) => {
+      if (result) {
+        setRestaurants(result);
+      }
+    });
+    */
   }, [reviews]);
 
-  async function fetchAll() {
+  async function fetchAllReviews() {
     try {
       const response = await axios.get("http://localhost:4000/reviews");
       console.log(response);
@@ -31,7 +42,18 @@ function SubmitReview(props) {
     }
   }
 
-  async function makePostCall(review) {
+  async function fetchAllRestaurants() {
+    try {
+      const response = await axios.get("http://localhost:4000/restaurants");
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  async function makeReviewsPostCall(review) {
     try {
       const response = await axios.post(
         "http://localhost:4000/reviews",
@@ -44,17 +66,38 @@ function SubmitReview(props) {
     }
   }
 
-  function updateList(review) {
-    makePostCall(review).then((result) => {
-      if (result && result.status === 200) setReviews([...reviews, review]);
+  async function makeRestaurantPatchCall(review) {
+    console.log(review._id);
+    try {
+      const response = await axios.patch(
+        "http://localhost:4000/restaurants/" + restaurantName,
+        {
+          _id: mongoose.Types.ObjectId(review._id)
+        }
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  function updateReviews(review) {
+    const resp = makeReviewsPostCall(review).then((result) => {
+      if (result && result.status === 200){ 
+        setReviews([...reviews, review]);
+      };
     });
+
+    makeRestaurantPatchCall(resp);
+    
   }
 
   return (
     <div>
       <HeaderComp></HeaderComp>
       <div className="container">
-        <Form handleSubmit={updateList} />
+        <Form handleSubmit={updateReviews} />
       </div>
     </div>
   );
