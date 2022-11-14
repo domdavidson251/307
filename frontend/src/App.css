@@ -1,10 +1,10 @@
 img{
 
     height: auto;
-    max-height: 250px;
+    /* max-height: 250px; */
     width: auto;
-    max-width: 250px;
-    display: flex;
+    /* max-width: 250px; */
+    /* display: flex; */
 
     align-items: center;
     justify-content: center;
