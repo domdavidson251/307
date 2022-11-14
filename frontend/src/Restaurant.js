@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
 import RestaurantMenu from "./RestaurantMenu";
 import RestaurantReviews from "./RestaurantReviews";
-import axios from "axios";
+//import axios from "axios";
 import { useParams } from "react-router-dom";
 //import Form from "./Form";
 //please work
