@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HeaderComp from "./header";
+//import HeaderComp from "./header";
 import RestaurantGrid from "./RestaurantGrid";
 import Restaurant from "./Restaurant";
-import SubmitReview from "./submit-review";
+import SubmitReview from "./SubmitReview";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
@@ -23,7 +23,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log("called useEffect");
     fetchAll().then((result) => {
       if (result) setRestaurants(result);
     });
@@ -39,7 +38,10 @@ function App() {
         path="/:restaurant"
         element={<Restaurant restaurantData={restaurants} />}
       />
-      <Route path="/submit-review" element={<SubmitReview />} />
+      <Route
+        path="/:restaurant/submit-review"
+        element={<SubmitReview restaurantData={restaurants} />}
+      />
     </Routes>
   );
 }

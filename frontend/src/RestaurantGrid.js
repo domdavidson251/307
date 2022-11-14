@@ -1,8 +1,8 @@
 //import {Container, Row, Col} from 'react-bootstrap';
 //import {useEffect, useState} from 'react';
 import HeaderComp from "./header";
-import Restaurant from "./Restaurant";
-import { Routes, Route } from "react-router-dom";
+//import Restaurant from "./Restaurant";
+//import { Routes, Route } from "react-router-dom";
 
 //===============================================================================
 

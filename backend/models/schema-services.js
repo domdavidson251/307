@@ -54,7 +54,12 @@ async function findRestaurantByName(name) {
     "Restaurant",
     RestaurantSchema
   );
-  return await restaurantModel.find({ name: name });
+  try {
+    return await restaurantModel.find({ name: name });
+  } catch (error) {
+    console.log(error);
+    return undefined;
+  }
 }
 
 async function addRestaurant(restaurant) {
@@ -147,6 +152,7 @@ async function addMenuItem(menuitem) {
 
 exports.getRestaurants = getRestaurants;
 exports.findRestaurantById = findRestaurantById;
+exports.findRestaurantByName = findRestaurantByName;
 exports.addRestaurant = addRestaurant;
 exports.getReviews = getReviews;
 exports.findReviewById = findReviewById;
