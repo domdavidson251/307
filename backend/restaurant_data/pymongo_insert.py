@@ -1,9 +1,10 @@
 import json
 from pymongo_get_database import get_database
+from bson.objectid import ObjectId
 dbname = get_database()
 
 restaurant = dbname.restaurants_list
-menu = dbname.menuitems_list
+menu_items = dbname.menuitems_list
 
 
 f = open('dining.json')
@@ -11,20 +12,23 @@ data = json.load(f)
 index = 100
 for i in range(len(data)):
     menu = []
+    res_id = ObjectId()
     for j in range(len(data[i]["Menu"])):
+        men_id = ObjectId()
         item = {
-            "_id": index,
+            "_id": men_id,
             "name": data[i]["Menu"][j]["Menu Item"],
-            "restaurant": i
+            "restaurant": res_id
         }
-        #menu.insert_one(item)
-        menu.append({index})
-        index = index + 1
+        print(item)
+        menu_items.insert_one(item)
+        menu.append(men_id)
+        
     rest = {
-        "_id": i,
+        "_id": res_id,
         "name": data[i]["Restaurant"],
         "menuitems": menu
     }
     print(rest)
     print("\n")
-    #restaurant.insert_one(restaurant)
+    restaurant.insert_one(rest)
