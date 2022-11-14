@@ -44,6 +44,16 @@ app.post("/restaurants", async (req, res) => {
   }
 });
 
+app.patch("/restaurants/:id", async (req, res) => {
+  const name = req.params["id"];
+  const temp = await services.findRestaurantByName(name);
+  const origRes = temp[0];
+  let modifiedRes = origRes;
+  modifiedRes.reviews.push(req.body);
+  const result = await modifiedRes.save();
+  res.send(result);
+});
+
 app.get("/reviews", async (req, res) => {
   try {
     const result = await services.getReviews();
