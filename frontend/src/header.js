@@ -39,9 +39,9 @@ const HeaderComp = () => {
             <LinkContainer to="/">
               <Nav.Link href="#home">Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/submit-review">
+            {/* <LinkContainer to="/submit-review">
               <Nav.Link>Submit Review</Nav.Link>
-            </LinkContainer>
+            </LinkContainer> */}
           </Nav>
         </Container>
       </Navbar>
