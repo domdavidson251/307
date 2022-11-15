@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import Form from "./Form";
 //please work
 
-function Restaurant(props) {
+function RestaurantMenu(props) {
   function makeTableBody() {
     const elems = props.restaurant.menuitems.map((item) => {
       return (
@@ -27,9 +27,9 @@ function Restaurant(props) {
 
   return (
     <div>
-      <div class="row">{makeTableBody}</div>
+      <div class="row">{makeTableBody()}</div>
     </div>
   );
 }
 
-export default Restaurant;
+export default RestaurantMenu;
