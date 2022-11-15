@@ -10,8 +10,9 @@ import axios from "axios";
 
 function App() {
   const [restaurants, setRestaurants] = useState([]);
+  const [menuitems, setMenuItems] = useState([]);
 
-  async function fetchAll() {
+  async function fetchAllRestaurants() {
     try {
       const response = await axios.get("http://localhost:4000/restaurants");
       return response.data.restaurants_list;
@@ -22,9 +23,23 @@ function App() {
     }
   }
 
+  async function fetchAllMenuItems() {
+    try {
+      const response = await axios.get("http://localhost:4000/menu");
+      return response.data.menuitems_list;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
+
   useEffect(() => {
-    fetchAll().then((result) => {
+    fetchAllRestaurants().then((result) => {
       if (result) setRestaurants(result);
+    });
+    fetchAllMenuItems().then((result) => {
+      if (result) setMenuItems(result);
     });
   }, []);
 
@@ -36,7 +51,7 @@ function App() {
       />
       <Route
         path="/:restaurant"
-        element={<Restaurant restaurantData={restaurants} />}
+        element={<Restaurant restaurantData={restaurants} menuItems={menuitems}/>}
       />
       <Route
         path="/:restaurant/submit-review"

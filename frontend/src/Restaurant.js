@@ -29,7 +29,7 @@ function Restaurant(props) {
           </div>
         </div>
 
-        <RestaurantMenu restaurant={rest[0]}></RestaurantMenu>
+        {/* <RestaurantMenu restaurant={rest[0]}></RestaurantMenu> */}
         <RestaurantReviews restaurant={rest[0]}></RestaurantReviews>
       </div>
     </div>
