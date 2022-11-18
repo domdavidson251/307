@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
 import RestaurantMenu from "./RestaurantMenu";
 import RestaurantReviews from "./RestaurantReviews";
-//import axios from "axios";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 //import Form from "./Form";
 //please work
 
-function Restaurant(props) {
+function Restaurant() {
+  const [restaurant, setRestaurant] = useState([]);
   let urlParams = useParams();
   const restaurantName = urlParams.restaurant;
-  const rest = props.restaurantData.filter((r) => r.name === restaurantName);
+
+  async function fetchRestaurant() {
+    try {
+      const response = await axios.get("http://localhost:4000/restaurants/" + restaurantName);
+      return response.data.restaurants_list;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
+
+  useEffect(() => {
+    console.log("USE EFFECT CALLED");
+    fetchRestaurant().then((result) => {
+      if (result) setRestaurant(result);
+    });
+  }, []);
+
   console.log(restaurantName);
-  console.log(rest[0]);
+  console.log(restaurant[0]);
   const reviewLink = "/" + restaurantName + "/submit-review";
 
   return (
@@ -29,8 +48,9 @@ function Restaurant(props) {
           </div>
         </div>
 
-        {/* <RestaurantMenu restaurant={rest[0]}></RestaurantMenu> */}
-        <RestaurantReviews restaurant={rest[0]}></RestaurantReviews>
+        {/* <RestaurantMenu rest={restaurant[0]}></RestaurantMenu> */}
+        {/* <RestaurantMenu ></RestaurantMenu> */}
+        <RestaurantReviews rest={restaurant[0]}></RestaurantReviews>
       </div>
     </div>
   );

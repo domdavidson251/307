@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 function RestaurantReviews(props) {
   function makeTableBody() {
-    const elems = props.restaurant.reviews.map((review) => {
+    const elems = props.rest.reviews.map((review) => {
       return (
         <div class="col-auto mb-3">
           <div class="card" style={{ width: "18rem" }}>
@@ -77,11 +77,11 @@ function RestaurantReviews(props) {
               </div>
               <div class="row text-left mt-4">
                 <div class="like mr-3 vote">
-                  <img src="https://i.imgur.com/mHSQOaX.png" />
+                  <img src="https://i.imgur.com/mHSQOaX.png" alt=""/>
                   <span class="blue-text pl-2">20</span>
                 </div>
                 <div class="unlike vote">
-                  <img src="https://i.imgur.com/bFBO3J7.png" />
+                  <img src="https://i.imgur.com/bFBO3J7.png" alt=""/>
                   <span class="text-muted pl-2">4</span>
                 </div>
               </div>

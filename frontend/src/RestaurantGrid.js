@@ -13,7 +13,7 @@ function RestaurantGrid(props) {
       const link = "http://localhost:3000/" + restaurant.name;
       const linkStyle = { "text-decoration": "none" };
       return (
-        <div class="col-auto mb-3">
+        <div key={restaurant._id} class="col-auto mb-3">
           <a href={link} style={linkStyle}>
             <div class="card" style={{ width: "18rem" }}>
               <img src={restaurant.img} alt={restaurant.name} />
