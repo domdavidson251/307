@@ -3,6 +3,10 @@ import "./assets/css/style.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import SearchBar from "./SearchBar";
+
+import Data from './data.json';
+
 
 const HeaderComp = () => {
   return (
@@ -45,6 +49,7 @@ const HeaderComp = () => {
           </Nav>
         </Container>
       </Navbar>
+      {/* <SearchBar placeholder="Enter..." /> */}
     </div>
   );
 };
