@@ -8,26 +8,35 @@ import { useParams } from "react-router-dom";
 //please work
 
 function RestaurantReviews(props) {
-  function makeTableBody() {
-    const elems = props.rest.reviews.map((review) => {
-      return (
-        <div class="col-auto mb-3">
-          <div class="card" style={{ width: "18rem" }}>
-            <div class="card-body">
-              <h5 class="card-title">{review.name}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">{review.review}</p>
+  function ReviewBody() {
+    if (props.rest) {
+      console.log(props.rest);
+      const elems = props.rest.reviews.map((review) => {
+        return (
+          <div class="col-auto mb-3">
+            <div class="card" style={{ width: "18rem" }}>
+              <div class="card-body">
+                <h5 class="card-title">{review}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">{review.review}</p>
+              </div>
             </div>
           </div>
-        </div>
-      );
-    });
-
-    return elems;
+        );
+      });
+  
+      return (
+      <>
+        {elems}
+      </>);
+    } else {
+      return <p>Waiting for restaurant reviews data...</p>
+    }
   }
-
+  
   return (
     <div>
+      <ReviewBody />
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
