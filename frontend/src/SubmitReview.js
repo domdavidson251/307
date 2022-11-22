@@ -71,9 +71,7 @@ function SubmitReview(props) {
     try {
       const response = await axios.patch(
         "http://localhost:4000/restaurants/" + restaurantName,
-        {
-          _id: mongoose.Types.ObjectId(review._id)
-        }
+        { _id: review._id }
       );
       return response;
     } catch (error) {
@@ -84,13 +82,12 @@ function SubmitReview(props) {
 
   function updateReviews(review) {
     const resp = makeReviewsPostCall(review).then((result) => {
-      if (result && result.status === 200){ 
+      if (result && result.status === 200) {
         setReviews([...reviews, review]);
-      };
+      }
     });
 
     makeRestaurantPatchCall(resp);
-    
   }
 
   return (

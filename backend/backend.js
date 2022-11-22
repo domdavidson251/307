@@ -60,7 +60,7 @@ app.patch("/restaurants/:name", async (req, res) => {
   const temp = await services.findRestaurantByName(name);
   const origRes = temp[0];
   let modifiedRes = origRes;
-  modifiedRes.reviews.push(req.body);
+  modifiedRes.reviews.push(req.body._id);
   const result = await modifiedRes.save();
   res.send(result);
 });

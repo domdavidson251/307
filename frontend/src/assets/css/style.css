@@ -10,6 +10,22 @@
   font-size: 30px;
 }
 
+.subheader {
+  padding: 30px;
+  text-align: left;
+  background: white;
+  color: black;
+  font-size: 30px;
+}
+
+.subsubheader {
+  padding: 20px;
+  text-align: left;
+  background: white;
+  color: black;
+  font-size: 10px;
+}
+
 .txt-center {
   text-align: center;
 }

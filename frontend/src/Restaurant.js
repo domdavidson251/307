@@ -12,10 +12,12 @@ function Restaurant(props) {
   const [restaurant, setRestaurant] = useState([]);
   let urlParams = useParams();
   const restaurantName = urlParams.restaurant;
-  
+
   async function fetchRestaurant() {
     try {
-      const response = await axios.get("http://localhost:4000/restaurants/" + restaurantName);
+      const response = await axios.get(
+        "http://localhost:4000/restaurants/" + restaurantName
+      );
       return response.data.restaurants_list;
     } catch (error) {
       //We're not handling errors. Just logging into the console.
@@ -37,15 +39,22 @@ function Restaurant(props) {
     <div>
       <HeaderComp></HeaderComp>
       <div class="container mt-4">
-        <div class="container">
-          <div class="row">
-            <a href={reviewLink}>
-              <input type="button" value="Submit a Review" />
-            </a>
-          </div>
+        <div className="subheader">
+          <h1>{restaurantName}</h1>
+          <a href="#reviews">
+            <input type="button" value="Jump to Reviews" />
+          </a>
+          <a href={reviewLink}>
+            <input type="button" value="Submit a Review" />
+          </a>
         </div>
-        <RestaurantMenu rest={restaurant[0]} menu={props.menuItems}/>
-        {/* <RestaurantMenu ></RestaurantMenu> */}
+        <div className="subsubheader">
+          <h1>Menu</h1>
+        </div>
+        <RestaurantMenu rest={restaurant[0]} menu={props.menuItems} />
+        <div className="subsubheader">
+          <h1 id="reviews">Reviews</h1>
+        </div>
         <RestaurantReviews rest={restaurant[0]}></RestaurantReviews>
       </div>
     </div>
