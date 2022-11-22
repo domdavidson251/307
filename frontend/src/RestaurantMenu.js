@@ -35,17 +35,21 @@ function RestaurantMenu(props) {
     // console.log(restaurant[0]);
     if (props.rest) {
       const elems = props.rest['menuitems'].map((item) => {
-        return (
-          <div key={item} class="col-auto mb-3">
-            <div class="card" style={{ width: "18rem" }}>
-              <div class="card-body">
-                {/* <h5 class="card-title">{item.name}</h5> */}
-                <h6 class="card-subtitle mb-2 text-muted">{item}</h6>
-                {/* <p class="card-text">{item.description}</p> */}
+        const menuItem = props.menu.filter((temp) => {return temp._id.toString() === item})[0];
+        if(menuItem){
+          return (
+            <div key={item} class="col-auto mb-3">
+              <div class="card" style={{ width: "18rem" }}>
+                <div class="card-body">
+                  <h5 class="card-title">{menuItem.name}</h5>
+                  {/* <h6 class="card-subtitle mb-2 text-muted">{menuItem.price}</h6> */}
+                  {/* <p class="card-text">{menuItem.description}</p> */}
+                </div>
               </div>
             </div>
-          </div>
-        );
+          )
+        }
+        ;
       });
 
     return (
@@ -53,8 +57,6 @@ function RestaurantMenu(props) {
         <div class="row">{elems}</div>
         </div>
       )
-    } else {
-      return (<p>Waiting for restaurant data...</p>);
     }
   }
   return (

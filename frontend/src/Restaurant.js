@@ -8,10 +8,11 @@ import { useParams } from "react-router-dom";
 import { propTypes } from "react-bootstrap/esm/Image";
 //import Form from "./Form";
 //please work
-function Restaurant() {
+function Restaurant(props) {
   const [restaurant, setRestaurant] = useState([]);
   let urlParams = useParams();
   const restaurantName = urlParams.restaurant;
+  
   async function fetchRestaurant() {
     try {
       const response = await axios.get("http://localhost:4000/restaurants/" + restaurantName);
@@ -28,8 +29,9 @@ function Restaurant() {
       if (result) setRestaurant(result);
     });
   }, []);
-  console.log(restaurantName);
-  console.log(restaurant[0]);
+
+  //console.log(restaurantName);
+  //console.log(restaurant[0]);
   const reviewLink = "/" + restaurantName + "/submit-review";
   return (
     <div>
@@ -42,7 +44,7 @@ function Restaurant() {
             </a>
           </div>
         </div>
-        <RestaurantMenu rest={restaurant[0]}/>
+        <RestaurantMenu rest={restaurant[0]} menu={props.menuItems}/>
         {/* <RestaurantMenu ></RestaurantMenu> */}
         <RestaurantReviews rest={restaurant[0]}></RestaurantReviews>
       </div>
