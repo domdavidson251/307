@@ -19,12 +19,12 @@ function RestaurantGrid(props) {
         const link = "http://localhost:3000/" + restaurant.name;
         const linkStyle = { "text-decoration": "none" };
         accumulator.push(
-          <div key={restaurant._id} class="col-auto mb-3">
+          <div key={restaurant._id} className="col-auto mb-3">
             <a href={link} style={linkStyle}>
-              <div class="card" style={{ width: "18rem" }}>
+              <div className="card" style={{ width: "18rem" }}>
                 <img src={restaurant.img} alt={restaurant.name} />
-                <div class="card-body">
-                  <h5 class="card-title">{restaurant.name}</h5>
+                <div className="card-body">
+                  <h5 className="card-title">{restaurant.name}</h5>
                 </div>
               </div>
             </a>
@@ -41,7 +41,7 @@ function RestaurantGrid(props) {
     <>
       <HeaderComp></HeaderComp>
       <div>
-        <div class="container mt-4">
+        <div className="container mt-4">
           <div style={{ width: "18rem" }}>
             <input
               type="text"
@@ -50,8 +50,8 @@ function RestaurantGrid(props) {
               value={searchInput}
             />
           </div>
-          <div class="row"></div>
-          <div class="row">{makeTableBody()}</div>
+          <div className="row"></div>
+          <div className="row">{makeTableBody()}</div>
         </div>
       </div>
     </>

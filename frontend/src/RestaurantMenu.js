@@ -27,7 +27,6 @@ function RestaurantMenu(props) {
 
   function TableBody() {
     //const rest = restaurant[0];
-    console.log("MENU TEST");
     //console.log(props.rest);
     // console.log(restaurant[0]);
     if (props.rest) {
@@ -43,12 +42,12 @@ function RestaurantMenu(props) {
             .includes(props.searchMenuInput.toLowerCase())
         ) {
           accumulator.push(
-            <div key={item} class="col-auto mb-3">
-              <div class="card" style={{ width: "18rem" }}>
-                <div class="card-body">
-                  <h5 class="card-title">{menuItem.name}</h5>
-                  {/* <h6 class="card-subtitle mb-2 text-muted">{menuItem.price}</h6> */}
-                  {/* <p class="card-text">{menuItem.description}</p> */}
+            <div key={item} className="col-auto mb-3">
+              <div className="card" style={{ width: "18rem" }}>
+                <div className="card-body">
+                  <h5 className="card-title">{menuItem.name}</h5>
+                  {/* <h6 className="card-subtitle mb-2 text-muted">{menuItem.price}</h6> */}
+                  {/* <p className="card-text">{menuItem.description}</p> */}
                 </div>
               </div>
             </div>
@@ -60,7 +59,7 @@ function RestaurantMenu(props) {
 
       return (
         <div>
-          <div class="row">{eles}</div>
+          <div className="row">{eles}</div>
         </div>
       );
     }

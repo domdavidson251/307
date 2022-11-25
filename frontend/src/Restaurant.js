@@ -33,7 +33,6 @@ function Restaurant(props) {
     }
   }
   useEffect(() => {
-    console.log("USE EFFECT CALLED");
     fetchRestaurant().then((result) => {
       if (result) setRestaurant(result);
     });
@@ -45,7 +44,7 @@ function Restaurant(props) {
   return (
     <div>
       <HeaderComp></HeaderComp>
-      <div class="container mt-4">
+      <div className="container mt-4">
         <div className="subheader">
           <h1>{restaurantName}</h1>
           <a href="#reviews">

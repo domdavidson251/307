@@ -63,15 +63,15 @@ function Form(props) {
   return (
     <form>
       <label htmlFor="Menu Item">Menu Item</label>
-      <div class="txt-center">
+      <div className="txt-center">
         <form>
-          <div class="rating">
+          <div className="rating">
             <input
               id="star5"
               name="star"
               type="radio"
               value="5"
-              class="radio-btn hide"
+              className="radio-btn hide"
               onChange={handleChange}
             />
             <label for="star5">☆</label>
@@ -80,7 +80,7 @@ function Form(props) {
               name="star"
               type="radio"
               value="4"
-              class="radio-btn hide"
+              className="radio-btn hide"
               onChange={handleChange}
             />
             <label for="star4">☆</label>
@@ -89,7 +89,7 @@ function Form(props) {
               name="star"
               type="radio"
               value="3"
-              class="radio-btn hide"
+              className="radio-btn hide"
               onChange={handleChange}
             />
             <label for="star3">☆</label>
@@ -98,7 +98,7 @@ function Form(props) {
               name="star"
               type="radio"
               value="2"
-              class="radio-btn hide"
+              className="radio-btn hide"
               onChange={handleChange}
             />
             <label for="star2">☆</label>
@@ -107,19 +107,19 @@ function Form(props) {
               name="star"
               type="radio"
               value="1"
-              class="radio-btn hide"
+              className="radio-btn hide"
               onChange={handleChange}
             />
             <label for="star1">☆</label>
-            <div class="clear"></div>
+            <div className="clear"></div>
           </div>
         </form>
       </div>
 
-      <div class="form-group">
+      <div className="form-group">
         <label htmlFor="review">Review</label>
         <textarea
-          class="form-control"
+          className="form-control"
           maxlength="500"
           type="text"
           name="review"
