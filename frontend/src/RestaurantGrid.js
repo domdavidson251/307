@@ -42,12 +42,14 @@ function RestaurantGrid(props) {
       <HeaderComp></HeaderComp>
       <div>
         <div class="container mt-4">
-          <input
-            type="text"
-            placeholder="Search here"
-            onChange={handleSearch}
-            value={searchInput}
-          />
+          <div style={{ width: "18rem" }}>
+            <input
+              type="text"
+              placeholder="Search here"
+              onChange={handleSearch}
+              value={searchInput}
+            />
+          </div>
           <div class="row"></div>
           <div class="row">{makeTableBody()}</div>
         </div>
