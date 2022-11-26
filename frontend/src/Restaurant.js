@@ -7,11 +7,18 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { propTypes } from "react-bootstrap/esm/Image";
 //import Form from "./Form";
-//please work
+
 function Restaurant(props) {
   const [restaurant, setRestaurant] = useState([]);
+  const [searchMenuInput, setSearchMenuInput] = useState("");
+
   let urlParams = useParams();
   const restaurantName = urlParams.restaurant;
+
+  const handleSearchMenu = (e) => {
+    e.preventDefault();
+    setSearchMenuInput(e.target.value);
+  };
 
   async function fetchRestaurant() {
     try {
@@ -26,7 +33,6 @@ function Restaurant(props) {
     }
   }
   useEffect(() => {
-    console.log("USE EFFECT CALLED");
     fetchRestaurant().then((result) => {
       if (result) setRestaurant(result);
     });
@@ -38,7 +44,7 @@ function Restaurant(props) {
   return (
     <div>
       <HeaderComp></HeaderComp>
-      <div class="container mt-4">
+      <div className="container mt-4">
         <div className="subheader">
           <h1>{restaurantName}</h1>
           <a href="#reviews">
@@ -51,7 +57,19 @@ function Restaurant(props) {
         <div className="subsubheader">
           <h1>Menu</h1>
         </div>
-        <RestaurantMenu rest={restaurant[0]} menu={props.menuItems} />
+        <div style={{ width: "18rem" }}>
+          <input
+            type="text"
+            placeholder="Menu search here"
+            onChange={handleSearchMenu}
+            value={searchMenuInput}
+          />
+        </div>
+        <RestaurantMenu
+          rest={restaurant[0]}
+          menu={props.menuItems}
+          searchMenuInput={searchMenuInput}
+        />
         <div className="subsubheader">
           <h1 id="reviews">Reviews</h1>
         </div>

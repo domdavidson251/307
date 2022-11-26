@@ -87,7 +87,7 @@ function SubmitReview(props) {
       }
     });
 
-    makeRestaurantPatchCall(resp);
+    makeRestaurantPatchCall(review);
   }
 
   return (

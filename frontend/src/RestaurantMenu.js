@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 
 function RestaurantMenu(props) {
-  //const [restaurant, setRestaurant] = useState();
-  //const restaurant = props.rest;
-  let urlParams = useParams();
-  const restaurantName = urlParams.restaurant;
+  /*
+  const [restaurant, setRestaurant] = useState();
+  const restaurant = props.rest;
 
-  /*async function fetchRestaurant() {
+  async function fetchRestaurant() {
     try {
       const response = await axios.get("http://localhost:4000/restaurants/" + restaurantName);
       return response.data.restaurants_list;
@@ -30,38 +27,43 @@ function RestaurantMenu(props) {
 
   function TableBody() {
     //const rest = restaurant[0];
-    console.log("MENU TEST");
     //console.log(props.rest);
     // console.log(restaurant[0]);
     if (props.rest) {
-      const elems = props.rest['menuitems'].map((item) => {
-        const menuItem = props.menu.filter((temp) => {return temp._id.toString() === item})[0];
-        if(menuItem){
-          return (
-            <div key={item} class="col-auto mb-3">
-              <div class="card" style={{ width: "18rem" }}>
-                <div class="card-body">
-                  <h5 class="card-title">{menuItem.name}</h5>
-                  {/* <h6 class="card-subtitle mb-2 text-muted">{menuItem.price}</h6> */}
-                  {/* <p class="card-text">{menuItem.description}</p> */}
+      const eles = props.rest["menuitems"].reduce((accumulator, item) => {
+        const menuItem = props.menu.filter((temp) => {
+          return temp._id.toString() === item;
+        })[0];
+
+        if (
+          menuItem &&
+          menuItem.name
+            .toLowerCase()
+            .includes(props.searchMenuInput.toLowerCase())
+        ) {
+          accumulator.push(
+            <div key={item} className="col-auto mb-3">
+              <div className="card" style={{ width: "18rem" }}>
+                <div className="card-body">
+                  <h5 className="card-title">{menuItem.name}</h5>
+                  {/* <h6 className="card-subtitle mb-2 text-muted">{menuItem.price}</h6> */}
+                  {/* <p className="card-text">{menuItem.description}</p> */}
                 </div>
               </div>
             </div>
-          )
+          );
         }
-        ;
-      });
 
-    return (
+        return accumulator;
+      }, []);
+
+      return (
         <div>
-        <div class="row">{elems}</div>
+          <div className="row">{eles}</div>
         </div>
-      )
+      );
     }
   }
-  return (
-    
-    <TableBody />
-  );
+  return <TableBody />;
 }
 export default RestaurantMenu;
