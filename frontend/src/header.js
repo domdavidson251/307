@@ -48,7 +48,7 @@ const HeaderComp = () => {
             </LinkContainer> */}
           </Nav>
           <div class="ms-auto">
-            <SearchBar placeholder="Search..." data={Data}/>
+            {/* <SearchBar placeholder="Search..." data={Data}/> */}
             </div>
         </Container>
       </Navbar>
