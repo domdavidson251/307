@@ -11,23 +11,25 @@ function RestaurantReviews(props) {
   function ReviewBody() {
     if (props.rest) {
       const elems = props.rest.reviews.map((review) => {
-        return (
-          <div className="col-auto mb-3" key="key1">
-            <div className="card" style={{ width: "18rem" }} key="key1">
-              <div className="card-body" key="key1">
-                <h5 className="card-title" key="key1">
-                  {review}
-                </h5>
-                <h6 className="card-subtitle mb-2 text-muted" key="key2">
-                  Card subtitle
-                </h6>
-                <p className="card-text" key="key3">
-                  {review.review}
-                </p>
+        if (review) {
+          return (
+            <div className="col-auto mb-3" key="key1">
+              <div className="card" style={{ width: "18rem" }} key="key1">
+                <div className="card-body" key="key1">
+                  <h5 className="card-title" key="key1">
+                    {review}
+                  </h5>
+                  <h6 className="card-subtitle mb-2 text-muted" key="key2">
+                    Card subtitle
+                  </h6>
+                  <p className="card-text" key="key3">
+                    {review.review}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        );
+          );
+        }
       });
 
       return <>{elems}</>;
