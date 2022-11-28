@@ -7,22 +7,46 @@ import { useParams } from "react-router-dom";
 //please work
 
 function RestaurantReviews(props) {
+  const [reviews, setReviews] = useState([]);
+
+  async function fetchAllReviews() {
+    try {
+      const response = await axios.get("http://localhost:4000/reviews");
+      return response.data.reviews_list;
+    } catch (error) {
+      //We're not handling errors. Just logging into the console.
+      console.log(error);
+      return false;
+    }
+  }
+
+  useEffect(() => {
+    fetchAllReviews().then((result) => {
+      if (result) setReviews(result);
+    });
+  }, []);
+
   function ReviewBody() {
     if (props.rest) {
       const elems = props.rest.reviews.map((review) => {
-        if (review) {
+        const restReview = reviews.filter((temp) => {
+          return temp._id.toString() === review;
+        })[0];
+
+        if (restReview) {
+          //console.log(restReview);
           return (
             <div className="col-auto mb-3" key="key1">
               <div className="card" style={{ width: "18rem" }} key="key1">
                 <div className="card-body" key="key1">
                   <h5 className="card-title" key="key1">
-                    {review}
+                    {restReview.review}
                   </h5>
                   <h6 className="card-subtitle mb-2 text-muted" key="key2">
-                    Card subtitle
+                    {restReview.stars + " stars"}
                   </h6>
                   <p className="card-text" key="key3">
-                    {review.review}
+                    {restReview.author}
                   </p>
                 </div>
               </div>
