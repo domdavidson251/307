@@ -30,8 +30,12 @@ const HeaderComp = () => {
       ></link>
 
       <div className="header">
-        <h1>Learn By Dining</h1>
-        <p>Find the Best Food on Campus</p>
+        <LinkContainer to="/">
+          <Nav.Link href="#home">
+            <h1>Learn By Dining</h1>
+            <p>Find the Best Food on Campus</p>
+          </Nav.Link>
+        </LinkContainer>
       </div>
       <Navbar className="color-nav" variant="dark">
         <Container>
