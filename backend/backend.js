@@ -88,6 +88,7 @@ app.get("/reviews/:id", async (req, res) => {
 app.post("/reviews", async (req, res) => {
   const review = req.body;
   const savedReview = await services.addReview(review);
+  console.log(savedReview);
   if (savedReview) {
     res.status(201).send(savedReview);
   } else {
