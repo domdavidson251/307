@@ -31,7 +31,7 @@ const HeaderComp = () => {
 
       <div className="header">
         <LinkContainer to="/">
-          <Nav.Link href="#home">
+          <Nav.Link href="#home" >
             <h1>Learn By Dining</h1>
             <p>Find the Best Food on Campus</p>
           </Nav.Link>
