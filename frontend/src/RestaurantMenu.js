@@ -43,7 +43,7 @@ function RestaurantMenu(props) {
         ) {
           accumulator.push(
             <div key={item} className="col-auto mb-3">
-              <div className="card" style={{ width: "18rem" }}>
+              <div className="card-body" style={{ width: "18rem" }}>
                 <div className="card-body">
                   <h5 className="card-title">{menuItem.name}</h5>
                   {/* <h6 className="card-subtitle mb-2 text-muted">{menuItem.price}</h6> */}

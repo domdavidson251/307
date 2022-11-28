@@ -20,8 +20,8 @@ function RestaurantGrid(props) {
         accumulator.push(
           <div key={restaurant._id} className="col-auto mb-3">
             <a href={link} style={linkStyle}>
-              <div className="card" style={{ width: "18rem" }}>
-                <img src={restaurant.img} alt={restaurant.name} />
+              <div className="card-body" style={{ width: "18rem" }}>
+                {/* <img src={restaurant.img} alt={restaurant.name} /> */}
                 <div className="card-body">
                   <h5 className="card-title">{restaurant.name}</h5>
                 </div>
