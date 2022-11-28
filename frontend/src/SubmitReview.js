@@ -6,8 +6,6 @@ import "./assets/css/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HeaderComp from "./header";
 
-const mongoose = require("mongoose");
-
 function SubmitReview(props) {
   let urlParams = useParams();
   const restaurantName = urlParams.restaurant;
@@ -42,36 +40,12 @@ function SubmitReview(props) {
     }
   }
 
-  async function fetchAllRestaurants() {
-    try {
-      const response = await axios.get("http://localhost:4000/restaurants");
-      console.log(response);
-      return response;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-
   async function makeReviewsPostCall(review) {
+    review.restaurant = restaurantName;
     try {
       const response = await axios.post(
         "http://localhost:4000/reviews",
         review
-      );
-      return response;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  }
-
-  async function makeRestaurantPatchCall(review) {
-    console.log(review._id);
-    try {
-      const response = await axios.patch(
-        "http://localhost:4000/restaurants/" + restaurantName,
-        { _id: review._id }
       );
       return response;
     } catch (error) {
@@ -86,8 +60,6 @@ function SubmitReview(props) {
         setReviews([...reviews, review]);
       }
     });
-
-    makeRestaurantPatchCall(review);
   }
 
   return (

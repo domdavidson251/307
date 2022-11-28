@@ -54,17 +54,6 @@ app.post("/restaurants", async (req, res) => {
   }
 });
 
-app.patch("/restaurants/:name", async (req, res) => {
-  console.log(req.body);
-  const name = req.params["name"];
-  const temp = await services.findRestaurantByName(name);
-  const origRes = temp[0];
-  let modifiedRes = origRes;
-  modifiedRes.reviews.push(req.body._id);
-  const result = await modifiedRes.save();
-  res.send(result);
-});
-
 app.get("/reviews", async (req, res) => {
   try {
     const result = await services.getReviews();
@@ -86,8 +75,19 @@ app.get("/reviews/:id", async (req, res) => {
 });
 
 app.post("/reviews", async (req, res) => {
+  const restaurantName = req.body.restaurant;
+  delete req.body.restaurant;
+
   const review = req.body;
   const savedReview = await services.addReview(review);
+
+  const temp = await services.findRestaurantByName(restaurantName);
+  const origRes = temp[0];
+  let modifiedRes = origRes;
+  modifiedRes.reviews.push(savedReview._id);
+  const result = await modifiedRes.save();
+  res.send(result);
+
   if (savedReview) {
     res.status(201).send(savedReview);
   } else {
