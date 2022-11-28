@@ -47,6 +47,7 @@ function SubmitReview(props) {
         "http://localhost:4000/reviews",
         review
       );
+      console.log(response);
       return response;
     } catch (error) {
       console.log(error);

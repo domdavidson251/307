@@ -102,8 +102,8 @@ async function addReview(review) {
     // You can use a Model to create new documents using 'new' and
     // passing the JSON content of the Document:
     const reviewToAdd = new reviewModel(review);
-    const savedReview = await reviewToAdd.save();
-    return savedReview;
+    await reviewToAdd.save();
+    return reviewToAdd;
   } catch (error) {
     console.log(error);
     return false;

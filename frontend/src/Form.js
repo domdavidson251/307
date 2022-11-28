@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import React, { useState } from "react";
 import usernameGen from "username-gen";
 
