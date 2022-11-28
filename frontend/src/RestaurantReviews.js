@@ -4,7 +4,6 @@ import "./assets/css/style.css";
 import HeaderComp from "./header";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-//import Form from "./Form";
 //please work
 
 function RestaurantReviews(props) {
