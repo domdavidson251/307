@@ -26,6 +26,26 @@ function RestaurantReviews(props) {
     });
   }, []);
 
+  function generateStars(numStars) {
+    let starArray = [0, 0, 0, 0, 0];
+    starArray = starArray.fill(1, 0, numStars);
+    const elems = starArray.reduce((accumulator, val) => {
+      if (val === 1) {
+        accumulator.push(<>{String.fromCharCode(9733)}</>);
+      } else {
+        accumulator.push(<>{String.fromCharCode(9734)}</>);
+      }
+
+      return accumulator;
+    }, []);
+
+    return (
+      <div>
+        <div className="row">{elems}</div>
+      </div>
+    );
+  }
+
   function ReviewBody() {
     if (props.rest) {
       const elems = props.rest.reviews.map((review) => {
@@ -36,19 +56,17 @@ function RestaurantReviews(props) {
         if (restReview) {
           //console.log(restReview);
           return (
-            <div className="col-auto mb-3" key="key1">
-              <div className="card" style={{ width: "18rem" }} key="key1">
-                <div className="card-body" key="key1">
-                  <h5 className="card-title" key="key1">
-                    {restReview.review}
-                  </h5>
-                  <h6 className="card-subtitle mb-2 text-muted" key="key2">
-                    {restReview.stars + " stars"}
-                  </h6>
-                  <p className="card-text" key="key3">
-                    {restReview.author}
-                  </p>
-                </div>
+            <div className="card" style={{ width: "60rem" }}>
+              <div className="row d-flex">
+                <h6 className="d-flex flex-column">
+                  <div class="flex-parent-element">
+                    <div class="flex-child-element">
+                      {generateStars(restReview.stars)}
+                    </div>
+                    <div class="flex-child-element">{restReview.author}</div>
+                  </div>
+                </h6>
+                <p className="card-text">{restReview.review}</p>
               </div>
             </div>
           );

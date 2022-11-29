@@ -208,3 +208,17 @@ td {
 .vote {
   cursor: pointer
 }
+
+.flex-parent-element {
+  display: flex;
+  width: 20%;
+}
+
+.flex-child-element {
+  flex: 1;
+  margin: 10px;
+}
+
+.flex-child-element:first-child {
+  margin-right: 20px;
+}
