@@ -161,3 +161,4 @@ exports.getMenuItems = getMenuItems;
 exports.findMenuItemById = findMenuItemById;
 exports.addMenuItem = addMenuItem;
 exports.setConnection = setConnection;
+exports.findMenuItemByName = findMenuItemByName;
