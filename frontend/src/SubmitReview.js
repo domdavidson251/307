@@ -66,8 +66,13 @@ function SubmitReview(props) {
   return (
     <div>
       <HeaderComp></HeaderComp>
-      <div className="container">
-        <Form handleSubmit={updateReviews} />
+      <div className="container mt-4">
+        <div className="subheader">
+          <h1>{restaurantName}</h1>
+        </div>
+        <div className="container">
+          <Form handleSubmit={updateReviews} />
+        </div>
       </div>
     </div>
   );
