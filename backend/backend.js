@@ -29,18 +29,13 @@ app.get("/restaurants", async (req, res) => {
           }
         }
       }
-      console.log(rest["name"])
       if (count != 0) {
-        console.log(total / count);
-        rest["avg_rating"] = total / count;
+        rest["avg_rating"] = (total / count).toFixed(2);
       }
       else {
-        console.log(0);
         rest["avg_rating"] = 0;
       }
-      console.log(rest);
     }
-    console.log(result);
     res.send({ restaurants_list: result });
   } catch (error) {
     console.log(error);
@@ -48,20 +43,9 @@ app.get("/restaurants", async (req, res) => {
   }
 });
 
-// app.get("/restaurants/:id", async (req, res) => {
-//   const id = req.params["id"];
-//   const result = await services.findRestaurantById(id);
-//   if (result === undefined || result === null) {
-//     res.status(404).send("Resource not found.");
-//   } else {
-//     res.send({ restaurants_list: result });
-//   }
-// });
-
 app.get("/restaurants/:name", async (req, res) => {
   const name = req.params["name"];
   const result = await services.findRestaurantByName(name);
-  console.log(result)
   if (result === undefined || result === null) {
     res.status(404).send("Resource not found.");
   } else {
@@ -78,14 +62,11 @@ app.get("/restaurants/:name", async (req, res) => {
       }
       console.log(result[0]["name"])
       if (count != 0) {
-        console.log(total / count);
-        result[0]["avg_rating"] = total / count;
+        result[0]["avg_rating"] = (total / count).toFixed(2);
       }
       else {
-        console.log(0);
         result[0]["avg_rating"] = 0;
       }
-      console.log(result[0]);
     res.send({ restaurants_list: result });
   }
 });
