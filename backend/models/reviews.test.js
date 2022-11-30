@@ -71,9 +71,8 @@ test("testing getReviews()", async () => {
 });
 
 test("testing findReviewById()", async () => {
-  const anyId = "123";
-  const review = await services.findReviewById(anyId);
-  expect(review).toBeUndefined();
+  const review = await services.findReviewById("63866c07c4bb070dc5043af4");
+  expect(review).toBe(null);
 });
 
 test("testing addReview()", async () => {
@@ -86,11 +85,7 @@ test("testing addReview()", async () => {
   };
 
   let reviews = await services.getReviews();
-
-  console.log(reviews.length);
-
   const res = await services.addReview(dummyReview);
-
   reviews = await services.getReviews();
   expect(reviews.length).toBe(3);
 });
