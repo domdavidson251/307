@@ -16,3 +16,5 @@ To connect to cloud DB, put a file called ".env" in your backend folder, and add
 
 To run test files in backend:
 ```npm test```
+
+Main class diagram: https://app.diagrams.net/#G19K_cfk0hN7-p1JWH0YYM0P6OavStVjzK
