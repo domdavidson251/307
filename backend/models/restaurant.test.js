@@ -66,11 +66,6 @@ beforeEach(async () => {
   await result.save();
 });
 
-afterEach(async () => {
-  // await restaurantModel.deleteMany({});
-  // await reviewModel.deleteMany({});
-});
-
 test("testing getRestaurants()", async () => {
   const res = await services.getRestaurants("Hearth");
   expect(res[0].name).toBe("Hearth");
