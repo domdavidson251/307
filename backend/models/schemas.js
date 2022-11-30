@@ -39,6 +39,7 @@ const RestaurantSchema = new mongoose.Schema(
     location: String,
     category: String,
     image: String,
+    avg_rating: Number,
     reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
     menuitems: [{ type: mongoose.Types.ObjectId, ref: "MenuItem" }],
   },

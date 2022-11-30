@@ -17,6 +17,30 @@ app.get("/restaurants", async (req, res) => {
   const name = req.query["name"];
   try {
     const result = await services.getRestaurants(name);
+    for await (const rest of result) {
+      var total = 0;
+      var count = 0;
+      for await (const rev of rest["reviews"]) {
+        if (rev) {
+          const rating = await services.findReviewById(rev);
+          if (rating) {
+            count += 1
+            total = total + rating["stars"];
+          }
+        }
+      }
+      console.log(rest["name"])
+      if (count != 0) {
+        console.log(total / count);
+        rest["avg_rating"] = total / count;
+      }
+      else {
+        console.log(0);
+        rest["avg_rating"] = 0;
+      }
+      console.log(rest);
+    }
+    console.log(result);
     res.send({ restaurants_list: result });
   } catch (error) {
     console.log(error);
@@ -88,11 +112,11 @@ app.post("/reviews", async (req, res) => {
   const result = await modifiedRes.save();
   res.send(result);
 
-  if (savedReview) {
+  /*if (savedReview) {
     res.status(201).send(savedReview);
   } else {
     res.status(500).end();
-  }
+  }*/
 });
 
 app.get("/menu", async (req, res) => {
