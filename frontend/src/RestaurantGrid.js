@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card } from "react-bootstrap";
 import HeaderComp from "./header";
 
-
 function RestaurantGrid(props) {
   const restaurantData = props.restaurantData;
   const [searchInput, setSearchInput] = useState("");
@@ -17,11 +16,19 @@ function RestaurantGrid(props) {
       if (restaurant.name.toLowerCase().includes(searchInput.toLowerCase())) {
         const link = "http://localhost:3000/" + restaurant.name;
         const linkStyle = { "text-decoration": "none" };
+        var parts = restaurant.image.split("/");
+        var result = parts[parts.length - 1];
+        parts = result.split(".");
+        result = parts[0];
         accumulator.push(
           <div key={restaurant._id} className="col-auto mb-3">
             <a href={link} style={linkStyle}>
-            <Card.Body className="homepg" style={{ width: "18rem" }}>
-                {/* <img src={restaurant.image} alt={restaurant.name} /> */}
+              <Card.Img
+                variant="top"
+                src={require("./images/" + result + ".jpg")}
+              />
+              <Card.Body className="homepg" style={{ width: "18rem" }}>
+                {/* <img src={restaurant.img} alt={restaurant.name} /> */}
                 <Card.Body>
                   <Card.Title>
                     <h5>{restaurant.name}</h5>
