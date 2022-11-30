@@ -1,7 +1,6 @@
-//import {Container, Row, Col} from 'react-bootstrap';
 import { useState } from "react";
 import HeaderComp from "./header";
-//import { Routes, Route } from "react-router-dom";
+
 
 function RestaurantGrid(props) {
   const restaurantData = props.restaurantData;
@@ -32,7 +31,6 @@ function RestaurantGrid(props) {
       }
       return accumulator;
     }, []);
-
     return reduced;
   }
 
