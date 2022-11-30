@@ -3,32 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
 
 function RestaurantMenu(props) {
-  /*
-  const [restaurant, setRestaurant] = useState();
-  const restaurant = props.rest;
-
-  async function fetchRestaurant() {
-    try {
-      const response = await axios.get("http://localhost:4000/restaurants/" + restaurantName);
-      return response.data.restaurants_list;
-    } catch (error) {
-      //We're not handling errors. Just logging into the console.
-      console.log(error);
-      return false;
-    }
-  }
-
-  useEffect(() => {
-    fetchRestaurant().then((result) => {
-      if (result) setRestaurant(result[0]);
-    });
-  }, []);
-  */
-
   function TableBody() {
-    //const rest = restaurant[0];
-    //console.log(props.rest);
-    // console.log(restaurant[0]);
     if (props.rest) {
       const eles = props.rest["menuitems"].reduce((accumulator, item) => {
         const menuItem = props.menu.filter((temp) => {
