@@ -25,7 +25,7 @@ function RestaurantGrid(props) {
                 <Card.Body>
                   <Card.Title>
                     <h5>{restaurant.name}</h5>
-                    <h7>{restaurant.avg_rating} stars</h7>
+                    <h6>{restaurant.avg_rating} stars</h6>
                   </Card.Title>
                 </Card.Body>
               </Card.Body>

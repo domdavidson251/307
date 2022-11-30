@@ -5,7 +5,6 @@ import RestaurantMenu from "./RestaurantMenu";
 import RestaurantReviews from "./RestaurantReviews";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { propTypes } from "react-bootstrap/esm/Image";
 //import Form from "./Form";
 
 function Restaurant(props) {
@@ -39,7 +38,20 @@ function Restaurant(props) {
   }, []);
 
   //console.log(restaurantName);
-  //console.log(restaurant[0]);
+  var loc = () => {
+    if (restaurant[0] === undefined) {
+      return; 
+    }
+    return restaurant[0].location;
+  }
+
+  var avg = () => {
+    if (restaurant[0] ===  undefined) {
+      return;
+    }
+    return restaurant[0]["avg_rating"];
+  }
+  console.log(restaurant[0]);
   const reviewLink = "/" + restaurantName + "/submit-review";
   return (
     <div>
@@ -47,6 +59,8 @@ function Restaurant(props) {
       <div className="container mt-4">
         <div className="subheader">
           <h1>{restaurantName}</h1>
+          <h3>Average Rating: {avg()} stars</h3>
+          <h6>Location: {loc()}</h6>
           <a href="#reviews">
             <input type="button" value="Jump to Reviews" />
           </a>
