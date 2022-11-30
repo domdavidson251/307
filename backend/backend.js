@@ -107,7 +107,6 @@ app.post("/reviews", async (req, res) => {
 
   const review = req.body;
   const savedReview = await services.addReview(review);
-
   const temp = await services.findRestaurantByName(restaurantName);
   const origRes = temp[0];
   let modifiedRes = origRes;

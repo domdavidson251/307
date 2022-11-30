@@ -8,7 +8,7 @@ function Form(props) {
       Math.floor(Math.random() * 15) + 5,
       false
     ),
-    date: "",
+    date: new Date(),
     stars: "0",
     upvotes: 0,
     downvotes: 0,
@@ -22,7 +22,7 @@ function Form(props) {
         Math.floor(Math.random() * 15) + 5,
         false
       ),
-      date: "",
+      date: new Date(Date.now()),
       stars: "0",
       upvotes: 0,
       downvotes: 0,
