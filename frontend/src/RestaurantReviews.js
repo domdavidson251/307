@@ -71,20 +71,22 @@ function RestaurantReviews(props) {
     if (modReviews.length > 0) {
       // create table
       const eles = modReviews.map((review) => {
-        var dat = ""
+        var dat = "";
         if (review.date) {
-          dat = new Date(review.date).toISOString().split('T')[0];
+          dat = new Date(review.date).toISOString().split("T")[0];
         }
         return (
           <div className="card" style={{ width: "60rem" }}>
             <div className="row d-flex">
               <h6 className="d-flex flex-column">
-                <div className="flex-parent-element">
-                  <div className="flex-child-element">
-                    {generateStars(review.stars)}
-                  </div>
-                  <div className="flex-child-element">{review.author}</div>
-                  <div className="flex-child-element">{dat}</div>
+                <div class="row">
+                  <div class="col">{generateStars(review.stars)}</div>
+                  <div class="col">{review.author}</div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col">{dat}</div>
                 </div>
               </h6>
               <p className="card-text">{review.review}</p>
