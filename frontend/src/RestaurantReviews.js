@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
-import HeaderComp from "./header";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-//please work
 
 function RestaurantReviews(props) {
   const [reviews, setReviews] = useState([]);
+  const [sortType, setSortType] = useState("top ratings");
+  const [modReviews, setModReviews] = useState([]);
 
   async function fetchAllReviews() {
     try {
@@ -24,7 +23,29 @@ function RestaurantReviews(props) {
     fetchAllReviews().then((result) => {
       if (result) setReviews(result);
     });
-  }, []);
+
+    if (props.rest) {
+      // get list of backend's review objs
+      const gg = props.rest.reviews.map((review) => {
+        const restReview = reviews.filter((temp) => {
+          return temp._id.toString() === review;
+        })[0];
+
+        return restReview;
+      });
+
+      // filter out all undefined entries
+      const filtered = gg.filter((a) => a !== undefined);
+
+      // sort list of backend's review objs
+      let sortedObjs = filtered.sort((a, b) => (a.stars > b.stars ? -1 : 1));
+      if (sortType === "bottom rated") {
+        sortedObjs = filtered.sort((a, b) => (a.stars > b.stars ? 1 : -1));
+      }
+
+      setModReviews(sortedObjs);
+    }
+  }, [sortType, props.rest, reviews]);
 
   function generateStars(numStars) {
     let starArray = [0, 0, 0, 0, 0];
@@ -47,33 +68,27 @@ function RestaurantReviews(props) {
   }
 
   function ReviewBody() {
-    if (props.rest) {
-      const elems = props.rest.reviews.map((review) => {
-        const restReview = reviews.filter((temp) => {
-          return temp._id.toString() === review;
-        })[0];
-
-        if (restReview) {
-          //console.log(restReview);
-          return (
-            <div className="card" style={{ width: "60rem" }}>
-              <div className="row d-flex">
-                <h6 className="d-flex flex-column">
-                  <div class="flex-parent-element">
-                    <div class="flex-child-element">
-                      {generateStars(restReview.stars)}
-                    </div>
-                    <div class="flex-child-element">{restReview.author}</div>
+    if (modReviews.length > 0) {
+      // create table
+      const eles = modReviews.map((review) => {
+        return (
+          <div className="card" style={{ width: "60rem" }}>
+            <div className="row d-flex">
+              <h6 className="d-flex flex-column">
+                <div className="flex-parent-element">
+                  <div className="flex-child-element">
+                    {generateStars(review.stars)}
                   </div>
-                </h6>
-                <p className="card-text">{restReview.review}</p>
-              </div>
+                  <div className="flex-child-element">{review.author}</div>
+                </div>
+              </h6>
+              <p className="card-text">{review.review}</p>
             </div>
-          );
-        }
+          </div>
+        );
       });
 
-      return <>{elems}</>;
+      return <>{eles}</>;
     } else {
       return <p>Waiting for restaurant reviews data...</p>;
     }
@@ -81,6 +96,14 @@ function RestaurantReviews(props) {
 
   return (
     <div>
+      <div style={{ width: "18rem" }}>
+        Sort By
+        <select onChange={(e) => setSortType(e.target.value)}>
+          <option value="top rated">top rated</option>
+          <option value="bottom rated">bottom rated</option>
+        </select>
+      </div>
+
       <ReviewBody />
       <link
         rel="stylesheet"
