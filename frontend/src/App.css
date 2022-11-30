@@ -22,3 +22,11 @@
   opacity: 1;
   transition-duration: 1s;
 }
+
+.flex-child-element {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  white-space: nowrap;
+
+}
