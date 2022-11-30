@@ -21,7 +21,7 @@ function RestaurantGrid(props) {
           <div key={restaurant._id} className="col-auto mb-3">
             <a href={link} style={linkStyle}>
             <Card.Body className="homepg" style={{ width: "18rem" }}>
-                {/* <img src={restaurant.img} alt={restaurant.name} /> */}
+                {/* <img src={restaurant.image} alt={restaurant.name} /> */}
                 <Card.Body>
                   <Card.Title>
                     <h5>{restaurant.name}</h5>
