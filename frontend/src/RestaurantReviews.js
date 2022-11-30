@@ -89,8 +89,6 @@ function RestaurantReviews(props) {
       });
 
       return <>{eles}</>;
-    } else {
-      return <p>Waiting for restaurant reviews data...</p>;
     }
   }
 
