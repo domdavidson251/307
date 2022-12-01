@@ -39,8 +39,11 @@ function RestaurantReviews(props) {
 
       // sort list of backend's review objs
       let sortedObjs = filtered.sort((a, b) => (a.stars > b.stars ? -1 : 1));
-      if (sortType === "bottom rated") {
+      if (sortType === "least rated") {
         sortedObjs = filtered.sort((a, b) => (a.stars > b.stars ? 1 : -1));
+      }
+      if (sortType === "most recent") {
+        sortedObjs = filtered.sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
       }
 
       setModReviews(sortedObjs);
@@ -81,7 +84,7 @@ function RestaurantReviews(props) {
               <h6 className="d-flex flex-column">
                 <div class="row">
                   <div class="col">{generateStars(review.stars)}</div>
-                  <div class="col">{review.author}</div>
+                  <div class="flex-child-element">{review.author}</div>
                   <div class="col"></div>
                   <div class="col"></div>
                   <div class="col"></div>
@@ -104,8 +107,9 @@ function RestaurantReviews(props) {
       <div style={{ width: "18rem" }}>
         Sort By
         <select onChange={(e) => setSortType(e.target.value)}>
-          <option value="top rated">top rated</option>
-          <option value="bottom rated">bottom rated</option>
+          <option value="highest rated">highest rated</option>
+          <option value="least rated">least rated</option>
+          <option value="most recent">most recent</option>
         </select>
       </div>
 
