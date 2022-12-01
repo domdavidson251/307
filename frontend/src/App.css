@@ -4,8 +4,10 @@
   align-items: center;    /* vertically center */
   height: 250px;
   width: 250px;
+  /* max-width:100%;
+  max-height:100%; */
 }
-.center-image img{
+.center-image.card.img{
   max-width:100%;
   max-height:100%;
 }
