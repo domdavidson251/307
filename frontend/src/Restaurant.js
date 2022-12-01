@@ -40,18 +40,17 @@ function Restaurant(props) {
   //console.log(restaurantName);
   var loc = () => {
     if (restaurant[0] === undefined) {
-      return; 
+      return;
     }
     return restaurant[0].location;
-  }
+  };
 
   var avg = () => {
-    if (restaurant[0] ===  undefined) {
+    if (restaurant[0] === undefined) {
       return;
     }
     return restaurant[0]["avg_rating"];
-  }
-  console.log(restaurant[0]);
+  };
   const reviewLink = "/" + restaurantName + "/submit-review";
   return (
     <div>
