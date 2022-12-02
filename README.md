@@ -26,3 +26,19 @@ To run test files in backend:
 ```npm test```
 
 
+**_Code Coverage Report -- generated 12/1/22 at 11 PM_**
+ PASS  models/menu.test.js
+ PASS  models/reviews.test.js
+ PASS  models/restaurant.test.js
+-|---------|----------|---------|---------|-------------------
+ | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-|---------|----------|---------|---------|-------------------
+ |   80.68 |       50 |     100 |   80.68 |                   
+  |   78.75 |       50 |     100 |   78.75 | ...34-135,148-149 
+  |     100 |      100 |     100 |     100 |                   
+-|---------|----------|---------|---------|-------------------
+
+Test Suites: 3 passed, 3 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        2.941 s, estimated 3 s
