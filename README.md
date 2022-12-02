@@ -14,39 +14,38 @@ https://www.figma.com/file/02rQIAj3SRb8QyAo1Xr9Wv/Learn-By-Dining?node-id=0%3A1
 cd frontend and run 'npm start' to start frontend.
 cd backend and run 'node backend.js' to start backend.
 
-### Style checker
-Prettier https://prettier.io/
-#### How to install Prettier
-lookup on “Prettier - Code formatter.” on VS Code Extensions and download
-
-### UML Class Diagram
-https://app.diagrams.net/#G19K_cfk0hN7-p1JWH0YYM0P6OavStVjzK
-
-Sequence Diagram for Submitting Review: https://online.visual-paradigm.com/community/share/learnbydining-16a85vmeud
-(You may need to click "Edit this Design" in order to view the diagram, ur browser might have issues displaying it as a thumbnail)
-
-
-
 To connect to cloud DB, put a file called ".env" in your backend folder, and add this line (insert your username and password):
-
 `MONGODB_URI="mongodb+srv://username:password@cluster0.jycgx75.mongodb.net/?retryWrites=true&w=majority"`
 
 To run test files in backend:
 `npm test`
 
- PASS  models/menu.test.js
- PASS  models/reviews.test.js
- PASS  models/restaurant.test.js
---------------------|---------|----------|---------|---------|---------------------------------
+### Style checker
+Prettier https://prettier.io/
+
+How to install: lookup on “Prettier - Code formatter.” on VS Code Extensions and download
+
+### UML Class Diagram
+https://app.diagrams.net/#G19K_cfk0hN7-p1JWH0YYM0P6OavStVjzK
+
+### Sequence Diagram for Submitting Review 
+(You may need to click "Edit this Design" in order to view the diagram, ur browser might have issues displaying it as a thumbnail)
+https://online.visual-paradigm.com/community/share/learnbydining-16a85vmeud
+
+### Code Coverage Report
+
+PASS  models/menu.test.js <br>
+PASS  models/reviews.test.js <br>
+PASS  models/restaurant.test.js <br>
+
 File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s               
 --------------------|---------|----------|---------|---------|---------------------------------
 All files           |   80.68 |       50 |     100 |   80.68 |                                 
  schema-services.js |   78.75 |       50 |     100 |   78.75 | ...,108-109,117,134-135,148-149 
  schemas.js         |     100 |      100 |     100 |     100 |                                 
---------------------|---------|----------|---------|---------|---------------------------------
 
-Test Suites: 3 passed, 3 total
-Tests:       11 passed, 11 total
-Snapshots:   0 total
-Time:        2.462 s, estimated 3 s
-Ran all test suites.
+Test Suites: 3 passed, 3 total <br>
+Tests:       11 passed, 11 total <br>
+Snapshots:   0 total <br>
+Time:        2.462 s, estimated 3 s <br>
+Ran all test suites. <br>
