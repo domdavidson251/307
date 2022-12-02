@@ -21,8 +21,6 @@ function RestaurantMenu(props) {
               <div className="card-body" style={{ width: "18rem" }}>
                 <div className="card-body">
                   <h5 className="card-title">{menuItem.name}</h5>
-                  {/* <h6 className="card-subtitle mb-2 text-muted">{menuItem.price}</h6> */}
-                  {/* <p className="card-text">{menuItem.description}</p> */}
                 </div>
               </div>
             </div>

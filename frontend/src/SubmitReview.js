@@ -9,11 +9,8 @@ import HeaderComp from "./header";
 function SubmitReview(props) {
   let urlParams = useParams();
   const restaurantName = urlParams.restaurant;
-  console.log(restaurantName);
-  //const rest = props.restaurantData.filter((r) => r.name === restaurantName);
 
   const [reviews, setReviews] = useState([]);
-  //const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
     fetchAllReviews().then((result) => {
@@ -21,18 +18,11 @@ function SubmitReview(props) {
         setReviews(result);
       }
     });
-    /*fetchAllRestaurants().then((result) => {
-      if (result) {
-        setRestaurants(result);
-      }
-    });
-    */
   }, [reviews]);
 
   async function fetchAllReviews() {
     try {
       const response = await axios.get("http://localhost:4000/reviews");
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -42,10 +32,7 @@ function SubmitReview(props) {
 
   async function makeReviewsPostCall(review) {
     review.restaurant = restaurantName;
-    console.log(review);
     try {
-      console.log("submitted Review");
-      console.log(review);
       const response = await axios.post(
         "http://localhost:4000/reviews",
         review

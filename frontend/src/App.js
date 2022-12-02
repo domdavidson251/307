@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import HeaderComp from "./header";
 import RestaurantGrid from "./RestaurantGrid";
 import Restaurant from "./Restaurant";
 import SubmitReview from "./SubmitReview";
