@@ -2,8 +2,6 @@
 
 Project Blurb: A food review website for Cal Poly dining. Allows for user-input reviews specific to restaurants. The reviews contain a star rating out of 5 and a character-limited description. There is a home page of the restaurants, a submit-review page, and a restaurant-specific page with the restaurant's menu items, and user-reviews. A user can search for restaurants, and search for menu items. Similarly, a user can sort the reviews based on the star ratings.
 
-team repo
-
 How To Run:
 cd frontend and run 'npm start' to start frontend.
 cd backend and run 'node backend.js' to start backend.
