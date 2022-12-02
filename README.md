@@ -23,8 +23,21 @@ To connect to cloud DB, put a file called ".env" in your backend folder, and add
 `MONGODB_URI="mongodb+srv://username:password@cluster0.jycgx75.mongodb.net/?retryWrites=true&w=majority"`
 
 To run test files in backend:
-<<<<<<< HEAD
 `npm test`
-=======
-```npm test```
->>>>>>> 30b17d5cb96794f3dac4fc73eed76d3e5761778d
+
+ PASS  models/menu.test.js
+ PASS  models/reviews.test.js
+ PASS  models/restaurant.test.js
+--------------------|---------|----------|---------|---------|---------------------------------
+File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s               
+--------------------|---------|----------|---------|---------|---------------------------------
+All files           |   80.68 |       50 |     100 |   80.68 |                                 
+ schema-services.js |   78.75 |       50 |     100 |   78.75 | ...,108-109,117,134-135,148-149 
+ schemas.js         |     100 |      100 |     100 |     100 |                                 
+--------------------|---------|----------|---------|---------|---------------------------------
+
+Test Suites: 3 passed, 3 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        2.462 s, estimated 3 s
+Ran all test suites.
