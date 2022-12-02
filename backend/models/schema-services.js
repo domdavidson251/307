@@ -103,6 +103,7 @@ async function addReview(review) {
     // passing the JSON content of the Document:
     const reviewToAdd = new reviewModel(review);
     await reviewToAdd.save();
+    console.log("review added");
     return reviewToAdd;
   } catch (error) {
     console.log(error);

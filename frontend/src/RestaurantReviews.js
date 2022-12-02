@@ -5,7 +5,7 @@ import axios from "axios";
 
 function RestaurantReviews(props) {
   const [reviews, setReviews] = useState([]);
-  const [sortType, setSortType] = useState("top ratings");
+  const [sortType, setSortType] = useState("most recent");
   const [modReviews, setModReviews] = useState([]);
 
   async function fetchAllReviews() {

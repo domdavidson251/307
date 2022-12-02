@@ -1,13 +1,9 @@
-import mongoose from "mongoose";
 import React, { useState } from "react";
-import usernameGen from "username-gen";
+var UsernameGenerator = require('username-generator');
 
 function Form(props) {
   const [review, setReview] = useState({
-    author: usernameGen.generateUsername(
-      Math.floor(Math.random() * 15) + 5,
-      false
-    ),
+    author: UsernameGenerator.generateUsername(),
     date: new Date(),
     stars: "0",
     upvotes: 0,
@@ -16,12 +12,10 @@ function Form(props) {
   });
 
   function submitForm() {
+    console.log(review);
     props.handleSubmit(review);
     setReview({
-      author: usernameGen.generateUsername(
-        Math.floor(Math.random() * 15) + 5,
-        false
-      ),
+      author: UsernameGenerator.generateUsername(),
       date: new Date(Date.now()),
       stars: "0",
       upvotes: 0,
@@ -32,16 +26,7 @@ function Form(props) {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "date")
-      setReview({
-        author: review["author"],
-        date: value,
-        stars: review["stars"],
-        upvotes: review["upvotes"],
-        downvotes: review["downvotes"],
-        review: review["review"],
-      });
-    else if (name === "star")
+    if (name === "star")
       setReview({
         author: review["author"],
         date: review["date"],

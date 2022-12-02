@@ -59,7 +59,6 @@ app.get("/restaurants/:name", async (req, res) => {
         }
       }
     }
-    console.log(result[0]["name"]);
     if (count != 0) {
       result[0]["avg_rating"] = (total / count).toFixed(2);
     } else {
@@ -100,9 +99,10 @@ app.get("/reviews/:id", async (req, res) => {
 });
 
 app.post("/reviews", async (req, res) => {
+  console.log("got review in backend");
+  console.log(req.body);
   const restaurantName = req.body.restaurant;
   delete req.body.restaurant;
-
   const review = req.body;
   const savedReview = await services.addReview(review);
   const temp = await services.findRestaurantByName(restaurantName);
@@ -110,13 +110,12 @@ app.post("/reviews", async (req, res) => {
   let modifiedRes = origRes;
   modifiedRes.reviews.push(savedReview._id);
   const result = await modifiedRes.save();
-  res.send(result);
-
-  /*if (savedReview) {
-    res.status(201).send(savedReview);
+  //res.send(result);
+  if (savedReview) {
+    res.status(201).send(result);
   } else {
     res.status(500).end();
-  }*/
+  }
 });
 
 app.get("/menu", async (req, res) => {

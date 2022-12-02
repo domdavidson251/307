@@ -42,12 +42,14 @@ function SubmitReview(props) {
 
   async function makeReviewsPostCall(review) {
     review.restaurant = restaurantName;
+    console.log(review);
     try {
+      console.log("submitted Review");
+      console.log(review);
       const response = await axios.post(
         "http://localhost:4000/reviews",
         review
       );
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
