@@ -8,7 +8,7 @@ How To Run:
 cd frontend and run 'npm start' to start frontend.
 cd backend and run 'node backend.js' to start backend.
 
-Figma Storyboard: https://www.figma.com/file/02rQIAj3SRb8QyAo1Xr9Wv/Learn-By-Dining?node-id=0%3A1
+UI Prototype: https://www.figma.com/file/02rQIAj3SRb8QyAo1Xr9Wv/Learn-By-Dining?node-id=0%3A1
 
 Main class diagram: https://app.diagrams.net/#G19K_cfk0hN7-p1JWH0YYM0P6OavStVjzK
 
