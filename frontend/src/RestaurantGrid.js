@@ -11,7 +11,7 @@ function RestaurantGrid(props) {
     setSearchInput(e.target.value);
   };
 
-function makeTableBody() {
+  function makeTableBody() {
     const reduced = restaurantData.reduce((accumulator, restaurant) => {
       if (restaurant.name.toLowerCase().includes(searchInput.toLowerCase())) {
         const link = "http://localhost:3000/" + restaurant.name;
@@ -30,11 +30,11 @@ function makeTableBody() {
                     src={require("./images/" + result + ".jpg")}
                   />
                 </div>
-                  <Card.Body>
-                    <Card.Title>
-                      <h6>{restaurant.avg_rating} stars</h6>
-                    </Card.Title>
-                  </Card.Body>
+                <Card.Body>
+                  <Card.Title>
+                    <h6>{restaurant.avg_rating} stars</h6>
+                  </Card.Title>
+                </Card.Body>
               </Card.Body>
             </a>
           </div>

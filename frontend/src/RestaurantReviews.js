@@ -43,7 +43,9 @@ function RestaurantReviews(props) {
         sortedObjs = filtered.sort((a, b) => (a.stars > b.stars ? 1 : -1));
       }
       if (sortType === "most recent") {
-        sortedObjs = filtered.sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
+        sortedObjs = filtered.sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
       }
 
       setModReviews(sortedObjs);

@@ -24,15 +24,14 @@ app.get("/restaurants", async (req, res) => {
         if (rev) {
           const rating = await services.findReviewById(rev);
           if (rating) {
-            count += 1
+            count += 1;
             total = total + rating["stars"];
           }
         }
       }
       if (count != 0) {
         rest["avg_rating"] = (total / count).toFixed(2);
-      }
-      else {
+      } else {
         rest["avg_rating"] = 0;
       }
     }
@@ -49,24 +48,23 @@ app.get("/restaurants/:name", async (req, res) => {
   if (result === undefined || result === null) {
     res.status(404).send("Resource not found.");
   } else {
-      var total = 0;
-      var count = 0;
-      for await (const rev of result[0]["reviews"]) {
-        if (rev) {
-          const rating = await services.findReviewById(rev);
-          if (rating) {
-            count += 1
-            total = total + rating["stars"];
-          }
+    var total = 0;
+    var count = 0;
+    for await (const rev of result[0]["reviews"]) {
+      if (rev) {
+        const rating = await services.findReviewById(rev);
+        if (rating) {
+          count += 1;
+          total = total + rating["stars"];
         }
       }
-      console.log(result[0]["name"])
-      if (count != 0) {
-        result[0]["avg_rating"] = (total / count).toFixed(2);
-      }
-      else {
-        result[0]["avg_rating"] = 0;
-      }
+    }
+    console.log(result[0]["name"]);
+    if (count != 0) {
+      result[0]["avg_rating"] = (total / count).toFixed(2);
+    } else {
+      result[0]["avg_rating"] = 0;
+    }
     res.send({ restaurants_list: result });
   }
 });

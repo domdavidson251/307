@@ -46,12 +46,13 @@ function App() {
   return (
     <Routes>
       <Route
-        exact path="/"
+        exact
+        path="/"
         element={<RestaurantGrid restaurantData={restaurants} />}
       />
       <Route
         path="/:restaurant"
-        element={<Restaurant menuItems={menuitems}/>}
+        element={<Restaurant menuItems={menuitems} />}
       />
       <Route
         path="/:restaurant/submit-review"
