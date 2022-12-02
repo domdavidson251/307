@@ -109,9 +109,9 @@ function RestaurantReviews(props) {
       <div style={{ width: "18rem" }}>
         Sort By
         <select onChange={(e) => setSortType(e.target.value)}>
+          <option value="most recent">most recent</option>
           <option value="highest rated">highest rated</option>
           <option value="least rated">least rated</option>
-          <option value="most recent">most recent</option>
         </select>
       </div>
 
